@@ -1,0 +1,2017 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INICIOPÍA - Hardware y Herrajes Decorativos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            color: #333;
+            background-color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* FORMAS GEOMÉTRICAS ANIMADAS EN EL FONDO */
+        .background-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            opacity: 0.04;
+            border: 1px solid #999;
+        }
+
+        .square {
+            width: 60px;
+            height: 60px;
+            background: transparent;
+        }
+
+        .triangle {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            background: transparent;
+            border-color: transparent;
+        }
+
+        .circle {
+            border-radius: 50%;
+            background: transparent;
+        }
+
+        /* ANIMACIONES MEJORADAS PARA FORMAS GEOMÉTRICAS */
+        @keyframes floatShape1 {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(40px, 30px) rotate(90deg);
+            }
+            50% {
+                transform: translate(30px, 80px) rotate(180deg);
+            }
+            75% {
+                transform: translate(-20px, 60px) rotate(270deg);
+            }
+        }
+
+        @keyframes floatShape2 {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg) scale(1);
+            }
+            25% {
+                transform: translate(-50px, 40px) rotate(-60deg) scale(1.1);
+            }
+            50% {
+                transform: translate(-30px, 90px) rotate(-120deg) scale(0.9);
+            }
+            75% {
+                transform: translate(40px, 50px) rotate(-180deg) scale(1.05);
+            }
+        }
+
+        @keyframes floatShape3 {
+            0%, 100% {
+                transform: translate(0, 0) scale(1) rotate(0deg);
+            }
+            33% {
+                transform: translate(20px, -40px) scale(1.3) rotate(120deg);
+            }
+            66% {
+                transform: translate(-30px, 20px) scale(0.8) rotate(240deg);
+            }
+        }
+
+        @keyframes floatShape4 {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg) scale(1);
+            }
+            20% {
+                transform: translate(70px, -30px) rotate(45deg) scale(1.2);
+            }
+            40% {
+                transform: translate(50px, 40px) rotate(90deg) scale(0.9);
+            }
+            60% {
+                transform: translate(-50px, 20px) rotate(135deg) scale(1.1);
+            }
+            80% {
+                transform: translate(-40px, -50px) rotate(180deg) scale(0.95);
+            }
+        }
+
+        @keyframes pulseShape {
+            0%, 100% {
+                opacity: 0.02;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.1;
+                transform: scale(1.3);
+            }
+        }
+
+        @keyframes spiralShape {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 0.02;
+            }
+            50% {
+                transform: translate(60px, 60px) rotate(180deg);
+                opacity: 0.08;
+            }
+            100% {
+                transform: translate(0, 0) rotate(360deg);
+                opacity: 0.02;
+            }
+        }
+
+/* BOTÓN FLOTANTE DE WHATSAPP */
+.whatsapp-btn-container {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 999;
+    animation: fadeIn 0.8s ease-out;
+}
+
+.whatsapp-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    border-radius: 50%;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    text-decoration: none;
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
+}
+
+.whatsapp-btn:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
+}
+
+.whatsapp-btn:active {
+    transform: translateY(-2px) scale(1.05);
+}
+
+.whatsapp-btn i {
+    font-size: 32px;
+    color: white;
+    z-index: 2;
+    position: relative;
+}
+
+/* Efecto de pulso */
+.whatsapp-pulse {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: rgba(37, 211, 102, 0.3);
+    animation: whatsappPulse 2s infinite;
+    z-index: 1;
+}
+
+@keyframes whatsappPulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* Tooltip */
+.whatsapp-tooltip {
+    position: absolute;
+    right: 70px;
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateX(10px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+.whatsapp-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -6px;
+    transform: translateY(-50%);
+    border-left: 6px solid rgba(0, 0, 0, 0.85);
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+}
+
+.whatsapp-btn:hover .whatsapp-tooltip {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+    .whatsapp-btn-container {
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .whatsapp-btn {
+        width: 55px;
+        height: 55px;
+    }
+    
+    .whatsapp-btn i {
+        font-size: 28px;
+    }
+    
+    .whatsapp-tooltip {
+        font-size: 13px;
+        padding: 6px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .whatsapp-btn-container {
+        bottom: 15px;
+        right: 15px;
+    }
+    
+    .whatsapp-btn {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .whatsapp-btn i {
+        font-size: 24px;
+    }
+    
+    .whatsapp-tooltip {
+        display: none; /* Ocultamos el tooltip en móviles muy pequeños */
+    }
+}
+
+
+        /* ANIMACIONES MEJORADAS */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(1.15);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+
+        /* NUEVA ANIMACIÓN PARA BOTÓN HERO - COMPLETAMENTE REINVENTADA */
+        @keyframes buttonShimmer {
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            }
+            100% {
+                transform: translateX(100%) translateY(100%) rotate(45deg);
+            }
+        }
+
+        @keyframes buttonBorderPulse {
+            0%, 100% {
+                border-color: rgba(220, 38, 38, 0.5);
+                box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7);
+            }
+            50% {
+                border-color: rgba(255, 255, 255, 0.9);
+                box-shadow: 0 0 20px 10px rgba(220, 38, 38, 0.4);
+            }
+        }
+
+        @keyframes buttonFloat {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                transform: translateY(-8px) scale(1.05);
+            }
+        }
+
+        @keyframes buttonTextGlow {
+            0%, 100% {
+                text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+            }
+            50% {
+                text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 25px rgba(220, 38, 38, 0.5);
+            }
+        }
+
+        .animate-fadeIn {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .animate-fadeInUp {
+            animation: fadeInUp 1s ease-out forwards;
+            opacity: 0;
+        }
+
+        .animate-slideDown {
+            animation: slideDown 0.8s ease-out;
+        }
+
+        .animate-slideUp {
+            animation: slideUp 1s ease-out forwards;
+            opacity: 0;
+        }
+
+        .animate-zoomIn {
+            animation: zoomIn 10s ease-out;
+        }
+
+        .animation-delay-100 { animation-delay: 0.1s; }
+        .animation-delay-200 { animation-delay: 0.2s; }
+        .animation-delay-300 { animation-delay: 0.3s; }
+
+        /* HEADER Y MENÚ HAMBURGUESA */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0.8rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+          nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #666;
+            font-weight: 700;
+            font-size: 14.5px;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 3px 0;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #dc2626;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #dc2626;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #dc2626;
+            animation: fadeIn 0.8s ease-out;
+            letter-spacing: 0.5px;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        /* BOTÓN HAMBURGUESA */
+        .hamburger-btn {
+            display: block;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+            transition: transform 0.3s ease;
+        }
+
+        @media (min-width: 768px) {
+            .hamburger-btn {
+                display: none;
+            }
+        }
+
+        .hamburger-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .hamburger-icon {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background-color: #333;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger-icon::before,
+        .hamburger-icon::after {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 2px;
+            background-color: #333;
+            left: 0;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger-icon::before {
+            top: -8px;
+        }
+
+        .hamburger-icon::after {
+            bottom: -8px;
+        }
+
+        /* ESTADOS DEL MENÚ HAMBURGUESA */
+        .hamburger-btn.active .hamburger-icon {
+            background-color: transparent;
+        }
+
+        .hamburger-btn.active .hamburger-icon::before {
+            transform: rotate(45deg);
+            top: 0;
+        }
+
+        .hamburger-btn.active .hamburger-icon::after {
+            transform: rotate(-45deg);
+            bottom: 0;
+        }
+
+        /* M
+        /* HERO SECTION */
+        #hero {
+            position: relative;
+            height: 24rem;
+            overflow: hidden;
+        }
+
+        @media (min-width: 768px) {
+            #hero {
+                height: 31.25rem;
+            }
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('Group 129 .jpg');
+            animation: zoomIn 10s ease-out;
+        }
+
+        .hero-content {
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            padding: 1rem;
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            animation: slideDown 1s ease-out;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            letter-spacing: -1px;
+            line-height: 1.1;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        @media (min-width: 768px) {
+            .hero-content h1 {
+                font-size: 4.5rem;
+            }
+        }
+
+        .hero-content p {
+            font-size: 1.125rem;
+            margin-bottom: 0.5rem;
+            animation: slideUp 1s ease-out forwards;
+            opacity: 0;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        .hero-content p:first-of-type {
+            animation-delay: 0.3s;
+        }
+
+        .hero-content p:nth-of-type(2) {
+            animation-delay: 0.5s;
+            font-size: 0.875rem;
+            max-width: 28rem;
+        }
+
+        @media (min-width: 768px) {
+            .hero-content p {
+                font-size: 1.25rem;
+            }
+
+            .hero-content p:nth-of-type(2) {
+                font-size: 1rem;
+            }
+        }
+
+    /* REEMPLAZAR EL CSS DEL BOTÓN HERO ACTUAL CON ESTE CÓDIGO CORREGIDO */
+
+
+
+/* BOTÓN HERO CON EFECTO DE BRILLO AUTOMÁTICO */
+.hero-btn-container {
+    margin-top: 2rem;
+    animation: fadeInUp 1s ease-out forwards;
+    opacity: 0;
+    animation-delay: 0.7s;
+    position: relative;
+}
+/* Botón principal - Versión mejorada */
+.hero-btn {
+    background: linear-gradient(45deg, #dc2626, #b91c1c, #dc2626);
+    color: #fff;
+    font-weight: bold;
+    padding: 1rem 2.5rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    box-shadow: 
+        0 5px 15px rgba(220, 38, 38, 0.4),
+        inset 0 1px 1px rgba(255, 255, 255, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+/* Capa de fondo animada - Mejorada */
+.hero-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        45deg,
+        #b91c1c,
+        #dc2626,
+        #b91c1c,
+        #dc2626,
+        #b91c1c
+    );
+    background-size: 400% 400%;
+    z-index: -1;
+    transition: opacity 0.4s ease;
+    opacity: 0;
+    border-radius: 50px;
+    animation: gradientShift 8s ease infinite;
+}
+
+/* Efecto de brillo principal - Mejorado */
+.hero-btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.15),
+        rgba(255, 255, 255, 0.35),
+        rgba(255, 255, 255, 0.15),
+        transparent
+    );
+    transform: skewX(-20deg);
+    z-index: 1;
+    animation: shine 6s infinite ease-in-out 1s;
+    filter: blur(1px);
+}
+
+/* Nueva capa de profundidad */
+.hero-btn-depth {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    background: linear-gradient(135deg, 
+        transparent 0%, 
+        rgba(255, 255, 255, 0.05) 50%, 
+        transparent 100%);
+    border-radius: 48px;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+}
+
+/* Efecto de neon/brillo exterior */
+.hero-btn-glow {
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    background: linear-gradient(45deg, 
+        rgba(220, 38, 38, 0.3), 
+        rgba(185, 28, 28, 0.2), 
+        rgba(220, 38, 38, 0.3));
+    border-radius: 54px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    filter: blur(8px);
+    animation: pulseGlow 4s infinite ease-in-out;
+}
+
+/* Nuevas animaciones mejoradas */
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes shine {
+    0% {
+        left: -100%;
+        opacity: 0.3;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    20% {
+        left: 150%;
+        opacity: 0.3;
+    }
+    100% {
+        left: 150%;
+        opacity: 0;
+    }
+}
+
+@keyframes pulseGlow {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.6;
+        transform: scale(1.02);
+    }
+}
+
+@keyframes floatSubtle {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    33% {
+        transform: translateY(-1px) rotate(1deg);
+    }
+    66% {
+        transform: translateY(1px) rotate(-1deg);
+    }
+}
+
+@keyframes morphBorder {
+    0%, 100% {
+        border-radius: 50px;
+        transform: scale(1);
+    }
+    50% {
+        border-radius: 40px 60px 40px 60px;
+        transform: scale(1.001);
+    }
+}
+
+/* Efecto de onda al hacer clic */
+.hero-btn:active::before {
+    animation: clickRipple 0.6s ease-out;
+}
+
+@keyframes clickRipple {
+    0% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* Estados interactivos mejorados */
+.hero-btn:hover::before {
+    opacity: 1;
+}
+
+.hero-btn:hover .hero-btn-glow {
+    opacity: 0.8;
+}
+
+.hero-btn:hover::after {
+    animation-duration: 2.5s;
+    animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.hero-btn:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 
+        0 12px 30px rgba(220, 38, 38, 0.5),
+        inset 0 1px 1px rgba(255, 255, 255, 0.4),
+        0 0 20px rgba(220, 38, 38, 0.3);
+    animation: floatSubtle 3s infinite ease-in-out, 
+               morphBorder 6s infinite ease-in-out;
+}
+
+.hero-btn:active {
+    transform: translateY(-1px) scale(0.98);
+    box-shadow: 
+        0 5px 15px rgba(220, 38, 38, 0.4),
+        inset 0 1px 1px rgba(255, 255, 255, 0.3);
+    transition: all 0.1s ease;
+}
+
+/* Icono del botón */
+.btn-icon {
+    margin-left: 10px;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+}
+
+.hero-btn:hover .btn-icon {
+    transform: translateX(5px) rotate(10deg);
+}
+
+/* Modo activo para animaciones continuas */
+.hero-btn.animate-glow {
+    animation: 
+        pulseGlow 3s infinite ease-in-out,
+        floatSubtle 4s infinite ease-in-out;
+}
+
+/* Efecto de carga */
+.hero-btn.loading::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    z-index: 2;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-btn {
+        padding: 0.9rem 2rem;
+        font-size: 1rem;
+    }
+    
+    .hero-btn:hover {
+        transform: translateY(-2px) scale(1.02);
+    }
+}
+/* Mejorar la animación del brillo del texto */
+@keyframes buttonTextGlow {
+    0%, 100% {
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
+    50% {
+        text-shadow: 0 0 15px rgba(255, 255, 255, 0.9), 0 0 25px rgba(255, 255, 255, 0.7);
+    }
+}
+
+/* Ajustar la animación del borde para que sea más visible */
+@keyframes buttonBorderPulse {
+    0%, 100% {
+        border-color: rgba(255, 255, 255, 0.3);
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.2);
+    }
+    50% {
+        border-color: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 0 20px 10px rgba(255, 255, 255, 0.4);
+    }
+}
+/* IMPORTACIÓN DE FUENTE */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap');
+
+/* CONTENEDOR PRINCIPAL */
+.brands-section {
+    background-color: #f3f4f6;
+    padding: 3rem 1rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* TÍTULO IDÉNTICO A LA IMAGEN */
+.section-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 3.5rem;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* IMPORTACIÓN DE FUENTE */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap');
+
+/* CONTENEDOR PRINCIPAL */
+.brands-section {
+    background-color: #f3f4f6;
+    padding: 4rem 1rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* TÍTULO */
+.section-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 3.5rem;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* GRID DE MARCAS */
+.brands-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .brands-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* TARJETA PROFESIONAL */
+.brand-card {
+    background: #ffffff;
+    border-radius: 1.8rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+    height: 100%;
+    border: none;
+}
+
+.brand-card:hover {
+    transform: translateY(-8px);
+}
+
+/* ÁREA SUPERIOR (CONTENEDOR DEL LOGO) */
+.brand-logo-container {
+    height: 200px; /* Aumentado para dar más presencia a la imagen */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0; /* Eliminado el padding para que la imagen llegue a los bordes */
+    background-color: #ffffff;
+    position: relative;
+    overflow: hidden;
+}
+
+/* LA IMAGEN: Ahora ocupa todo el contenedor */
+.brand-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* "contain" mantiene la proporción, "cover" llenaría el cuadro cortando bordes */
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+/* Efecto opcional: zoom suave al pasar el mouse */
+.brand-card:hover .brand-logo {
+    transform: scale(1.05);
+}
+
+/* ÁREA INFERIOR (TEXTO NEGRO) */
+.brand-info {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 1.5rem 1.2rem;
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 110px;
+}
+
+.brand-desc {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin: 0;
+    font-weight: 400;
+    color: #ffffff;
+}
+
+/* CASO ESPECIAL: MARCA BLUM (NARANJA) */
+.brand-card.blum-style .brand-logo-container {
+    background-color: #ff6b00; 
+}
+
+/* Ajuste para logo de Blum si es blanco */
+.brand-card.blum-style .brand-logo {
+    filter: brightness(0) invert(1);
+    width: 85%; /* Un poco de respiro para que no toque los bordes laterales */
+    height: 85%;
+}
+
+/* RESPONSIVE PARA MÓVILES */
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .brand-logo-container {
+        height: 150px;
+    }
+    
+    .brand-info {
+        padding: 1rem;
+        min-height: 90px;
+    }
+    
+    .brand-desc {
+        font-size: 0.8rem;
+    }
+}
+
+        /* ABOUT SECTION */
+        .about-section {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            color: #fff;
+            padding: 4rem 1rem;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .about-section {
+                padding: 5rem 1rem;
+            }
+        }
+
+        .about-section h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out forwards;
+            opacity: 0;
+            letter-spacing: -0.5px;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        @media (min-width: 768px) {
+            .about-section h2 {
+                font-size: 3rem;
+            }
+        }
+
+        .about-section p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out forwards;
+            opacity: 0;
+            animation-delay: 0.2s;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        @media (min-width: 768px) {
+            .about-section p {
+                font-size: 1.75rem;
+            }
+        }
+
+        /* PHILOSOPHY SECTION */
+        .philosophy-section {
+            background: #fff;
+            padding: 3rem 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .philosophy-section {
+                padding: 4rem 1rem;
+            }
+        }
+
+        .philosophy-container {
+            max-width: 56rem;
+            margin: 0 auto;
+        }
+
+        .philosophy-section h3 {
+            font-size: 1.875rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease-out forwards;
+            opacity: 0;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        @media (min-width: 768px) {
+            .philosophy-section h3 {
+                font-size: 2.25rem;
+            }
+        }
+
+        .philosophy-section h4 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out forwards;
+            opacity: 0;
+            animation-delay: 0.2s;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        @media (min-width: 768px) {
+            .philosophy-section h4 {
+                font-size: 1.75rem;
+            }
+        }
+
+        .values-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .value-item {
+            border-left: 4px solid #dc2626;
+            padding-left: 1.5rem;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            animation: fadeInUp 1s ease-out forwards;
+            opacity: 0;
+            transition: all 0.3s ease;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        .value-item:hover {
+            border-left-width: 8px;
+            padding-left: 2rem;
+            background: #f9fafb;
+        }
+
+        .value-item:nth-child(1) { animation-delay: 0.3s; }
+        .value-item:nth-child(2) { animation-delay: 0.45s; }
+        .value-item:nth-child(3) { animation-delay: 0.6s; }
+
+        .value-item h5 {
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        .value-item p {
+            color: #4b5563;
+            font-size: 1rem;
+            line-height: 1.7;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        /* QUOTE SECTION */
+        .quote-section {
+            background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+            color: #fff;
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .quote-section {
+                padding: 4rem 1rem;
+            }
+        }
+
+        .quote-section h2 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            animation: fadeInUp 1s ease-out forwards;
+            opacity: 0;
+            letter-spacing: -0.5px;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        @media (min-width: 768px) {
+            .quote-section h2 {
+                font-size: 2.25rem;
+            }
+        }
+
+        /* CATALOG SECTION CON IMÁGENES MÁS ALTAS */
+        .catalog-section {
+            background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+            padding: 3rem 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .catalog-section {
+                padding: 4rem 1rem;
+            }
+        }
+
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .catalog-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        /* IMÁGENES MÁS ALTAS - AUMENTADO */
+        .catalog-item {
+            height: 16rem;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            animation: fadeInUp 1s ease-out forwards;
+            opacity: 0;
+            overflow: hidden;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .catalog-item:nth-child(1) { 
+            animation-delay: 0s; 
+            background-image: url('FOTO-1.png');
+        }
+        .catalog-item:nth-child(2) { 
+            animation-delay: 0.15s; 
+            background-image: url('FOTO-2.png');
+        }
+        .catalog-item:nth-child(3) { 
+            animation-delay: 0.3s; 
+            background-image: url('FOTO-3.png');
+        }
+        .catalog-item:nth-child(4) { 
+            animation-delay: 0.45s; 
+            background-image: url('FOTO-4 (1).png');
+        }
+        .catalog-item:nth-child(5) { 
+            animation-delay: 0.6s; 
+            background-image: url('FOTO-5.png');
+        }
+        .catalog-item:nth-child(6) { 
+            animation-delay: 0.75s; 
+            background-image: url('FONDO-PRINCIPAL.png');
+        }
+
+        @media (min-width: 768px) {
+            .catalog-item {
+                height: 20rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .catalog-item {
+                height: 14rem;
+            }
+        }
+
+        .catalog-item:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .catalog-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2));
+            z-index: 1;
+            transition: all 0.4s ease;
+        }
+
+        .catalog-title {
+            position: relative;
+            z-index: 10;
+            font-weight: 700;
+            color: #fff;
+            text-align: center;
+            font-size: 0.875rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        @media (min-width: 768px) {
+            .catalog-title {
+                font-size: 1rem;
+            }
+        }
+
+        /* CONTACT SECTION */
+        .contact-section {
+            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            padding: 3rem 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .contact-section {
+                padding: 4rem 1rem;
+            }
+        }
+
+        .contact-container {
+            max-width: 42rem;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            background: #fff;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            animation: fadeInUp 1s ease-out forwards;
+            opacity: 0;
+            animation-delay: 0.2s;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #000;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 0.75rem;
+            border: 2px solid #d1d5db;
+            border-radius: 0.5rem;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #dc2626;
+            box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 6rem;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+            color: #fff;
+            font-weight: 700;
+            padding: 0.85rem;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-size: 1rem;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .submit-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .submit-btn:hover {
+            background: linear-gradient(135deg, #b91c1c 0%, #991b1b 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(220, 38, 38, 0.3);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        /* FOOTER */
+        footer {
+            background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+            color: #fff;
+            padding: 3rem 1rem;
+        }
+
+        @media (min-width: 768px) {
+            footer {
+                padding: 4rem 1rem;
+            }
+        }
+
+        .footer-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .footer-section h3 {
+            font-weight: 700;
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        .footer-section p {
+            font-size: 0.875rem;
+            color: #d1d5db;
+            line-height: 1.6;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            font-size: 0.875rem;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        .footer-section ul li a:hover {
+            color: #dc2626;
+            transform: translateX(5px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.5rem;
+        }
+
+        .social-links a:hover {
+            color: #dc2626;
+            transform: translateY(-3px) scale(1.2);
+        }
+
+        .footer-divider {
+            border-top: 1px solid #374151;
+            padding-top: 2rem;
+            text-align: center;
+            font-size: 0.875rem;
+            color: #9ca3af;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        /* RESPONSIVE ADICIONAL */
+        @media (max-width: 640px) {
+            .section-title {
+                font-size: 1.75rem;
+            }
+
+            .contact-form {
+                padding: 1.5rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-btn {
+                font-size: 0.9rem;
+                padding: 0.8rem 2rem;
+            }
+            
+            .about-section h2 {
+                font-size: 1.75rem;
+            }
+            
+            .about-section p {
+                font-size: 1.25rem;
+            }
+        }
+        
+        @media (max-width: 380px) {
+            .brands-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .catalog-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (min-width: 1400px) {
+            .hero-content h1 {
+                font-size: 5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- FONDO CON FORMAS GEOMÉTRICAS ANIMADAS -->
+    <div class="background-shapes" id="backgroundShapes"></div>
+
+    <!-- HEADER CON MENÚ HAMBURGUESA -->
+    <header>
+        <nav>
+           <img src="Ferrofasil.png" alt="INICIOPÍA Logo" style="width: 125px;  height: 40px;">
+            
+            <!-- Botón Hamburguesa -->
+            <button class="hamburger-btn" id="hamburgerBtn" aria-label="Menú de navegación">
+                <span class="hamburger-icon"></span>
+            </button>
+            
+            <!-- Menú de Navegación -->
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#hero">Inicio</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="#services">Servicios</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1>LA VITRINA DE INNOVACIÓN</h1>
+            <p>Elevamos el detalle de cada proyecto.</p>
+            <p>Tu Decorative Hardware Store en Caracas. Distribución exclusiva de las marcas que definen el diseño interior actual.</p>
+            <button class="hero-btn" onclick="scrollToContact()"><span>CONOCE NUESTRAS MARCAS</span></button>
+        </div>
+    </section>
+
+<section class="brands-section">
+    <div class="section-container">
+        <h2 class="section-title">Marcas Destacadas 2026</h2>
+        
+        <div class="brands-grid">
+            <div class="brand-card">
+                <div class="brand-logo-container">
+                    <img src="PERTECH (1).png" alt="Pertech" class="brand-logo">
+                </div>
+                <div class="brand-info">
+                    <p class="brand-desc">La vanguardia en laminados de alta presión.</p>
+                </div>
+            </div>
+
+            <div class="brand-card">
+                <div class="brand-logo-container">
+                    <img src="XO.png" alt="Vally" class="brand-logo">
+                </div>
+                <div class="brand-info">
+                    <p class="brand-desc">Manillas que son piezas de arte.</p>
+                </div>
+            </div>
+
+            <div class="brand-card">
+                <div class="brand-logo-container">
+                    <img src="FFG (1).png" alt="FPG" class="brand-logo">
+                </div>
+                <div class="brand-info">
+                    <p class="brand-desc">La calidez y textura de las mejores chapillas.</p>
+                </div>
+            </div>
+
+            <div class="brand-card blum-card">
+                <div class="brand-logo-container">
+                    <img src="BLUM (1).png" alt="Blum" class="brand-logo-white">
+                </div>
+                <div class="brand-info">
+                    <p class="brand-desc">Movimiento perfecto y sistemas de apertura premium.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <!-- ABOUT SECTION -->
+    <section id="about" class="about-section">
+        <div class="section-container">
+            <h2>DONDE LA INGENIERÍA DE HERRAJES</h2>
+            <p>SE ENCUENTRA CON LA ESTÉTICA</p>
+        </div>
+    </section>
+
+    <!-- PHILOSOPHY SECTION -->
+    <section class="philosophy-section">
+        <div class="philosophy-container">
+            <h3>SOMOS EL PUENTE ENTRE LA IDEA DEL DISEÑADOR Y LA EJECUCIÓN DEL CARPINTERO.</h3>
+            
+            <h4>¿POR QUÉ ELEGIRNOS?</h4>
+
+            <div class="values-list">
+                <div class="value-item">
+                    <h5><i class="fas fa-graduation-cap" style="color: #dc2626; margin-right: 8px;"></i> Experiencia</h5>
+                    <p>Más de 40 años a nivel profesional en el ámbito de la arquitectura e ingeniería, con más de 20 años en la venta de herrajes.</p>
+                </div>
+                <div class="value-item">
+                    <h5><i class="fas fa-tools" style="color: #dc2626; margin-right: 8px;"></i> Asesoría Técnica</h5>
+                    <p>Conocemos el "cómo funciona", no solo el "cómo se ve". Te ayudamos a seleccionar los herrajes perfectos para cada proyecto.</p>
+                </div>
+                <div class="value-item">
+                    <h5><i class="fas fa-box-open" style="color: #dc2626; margin-right: 8px;"></i> Disponibilidad</h5>
+                    <p>Stock real en Caracas para proyectos de cualquier escala. Entrega rápida y seguimiento personalizado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUOTE SECTION -->
+    <section class="quote-section">
+        <div class="section-container">
+            <h2>CREEMOS QUE UN MUEBLE ES TAN BUENO COMO LOS HERRAJES QUE LO SOSTIENEN</h2>
+        </div>
+    </section>
+
+    <!-- CATALOG SECTION CON IMÁGENES MÁS ALTAS -->
+    <section id="services" class="catalog-section">
+        <div class="section-container">
+            <h2 class="section-title">CATÁLOGO ESPECIALIZADO</h2>
+            
+            <div class="catalog-grid">
+                <div class="catalog-item">
+                    <div class="catalog-overlay"></div>
+                    <p class="catalog-title"><i class="fas fa-door-open" style="margin-right: 8px;"></i> SISTEMAS DE APERTURA</p>
+                </div>
+                <div class="catalog-item">
+                    <div class="catalog-overlay"></div>
+                    <p class="catalog-title"><i class="fas fa-lock" style="margin-right: 8px;"></i> CERRADURAS</p>
+                </div>
+                <div class="catalog-item">
+                    <div class="catalog-overlay"></div>
+                    <p class="catalog-title"><i class="fas fa-key" style="margin-right: 8px;"></i> SISTEMAS DE CIERRE</p>
+                </div>
+                <div class="catalog-item">
+                    <div class="catalog-overlay"></div>
+                    <p class="catalog-title"><i class="fas fa-grip-horizontal" style="margin-right: 8px;"></i> TIRADORES Y MANILLAS</p>
+                </div>
+                <div class="catalog-item">
+                    <div class="catalog-overlay"></div>
+                    <p class="catalog-title"><i class="fas fa-th-large" style="margin-right: 8px;"></i> ORGANIZACIÓN DE INTERIORES</p>
+                </div>
+                <div class="catalog-item">
+                    <div class="catalog-overlay"></div>
+                    <p class="catalog-title"><i class="fas fa-toolbox" style="margin-right: 8px;"></i> SUMINISTRACIÓN Y COMPLEMENTOS</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="contact-section">
+        <div class="contact-container">
+            <h2 class="section-title">CONTÁCTANOS VÍA CORREO ELECTRÓNICO</h2>
+
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="message"><i class="fas fa-edit" style="color: #dc2626; margin-right: 8px;"></i> Formulario:</label>
+                    <textarea id="message" name="message" placeholder="¿Tienes un proyecto en mente? Cuéntanos sobre tus necesidades..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="name"><i class="fas fa-user" style="color: #dc2626; margin-right: 8px;"></i> Nombre y Apellido:</label>
+                    <input type="text" id="name" name="name" placeholder="Nombre y Apellido" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone"><i class="fas fa-phone" style="color: #dc2626; margin-right: 8px;"></i> Teléfono:</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Teléfono" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email"><i class="fas fa-envelope" style="color: #dc2626; margin-right: 8px;"></i> Correo electrónico:</label>
+                    <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-paper-plane" style="margin-right: 8px;"></i> ENVIAR
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3><i class="fas fa-map-marker-alt" style="color: #dc2626; margin-right: 8px;"></i> Dirección:</h3>
+                    <p>Pza Avenida de los Palos Grandes, San Cristóbal Francisco de Miranda, Caracas</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3><i class="fas fa-clock" style="color: #dc2626; margin-right: 8px;"></i> Horarios:</h3>
+                    <p>Lunes a Viernes<br>de 8:00 am a 4:00 pm<br>Contáctanos</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3><i class="fas fa-bars" style="color: #dc2626; margin-right: 8px;"></i> Menú</h3>
+                    <ul>
+                        <li><a href="#hero">Inicio</a></li>
+                        <li><a href="#about">Nosotros</a></li>
+                        <li><a href="#services">Servicios</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#contact">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-divider">
+                <p>&copy; 2026 INICIOPÍA Hardware. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // MENÚ HAMBURGUESA
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const navMenu = document.getElementById('navMenu');
+
+        hamburgerBtn.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            
+            // Cambiar aria-label para accesibilidad
+            const isExpanded = this.classList.contains('active');
+            this.setAttribute('aria-expanded', isExpanded);
+            this.setAttribute('aria-label', isExpanded ? 'Cerrar menú' : 'Abrir menú');
+        });
+
+        // Cerrar menú al hacer clic en un enlace (móviles)
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth < 768) {
+                    hamburgerBtn.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    hamburgerBtn.setAttribute('aria-expanded', 'false');
+                    hamburgerBtn.setAttribute('aria-label', 'Abrir menú');
+                }
+            });
+        });
+
+        // FORMULARIO
+        const contactForm = document.getElementById('contactForm');
+
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = {
+                message: document.getElementById('message').value,
+                name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value
+            };
+
+            console.log('Formulario enviado:', formData);
+
+            contactForm.reset();
+            alert('¡Mensaje enviado correctamente! Nos pondremos en contacto pronto.');
+        });
+
+        // NAVEGACIÓN SUAVE
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // FUNCIÓN PARA DESPLAZARSE A LA SECCIÓN DE CONTACTO
+        function scrollToContact() {
+            const contactSection = document.getElementById('contact');
+            if (contactSection) {
+                contactSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        // Agregar event listener al botón hero
+        document.querySelector('.hero-btn').addEventListener('click', scrollToContact);
+
+        // OBSERVADOR PARA ANIMACIONES AL SCROLL
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-fadeInUp, .animate-slideUp').forEach(el => {
+            observer.observe(el);
+        });
+
+        // CREAR FORMAS GEOMÉTRICAS ANIMADAS EN EL FONDO
+        const backgroundShapes = document.getElementById('backgroundShapes');
+        
+        function createShapes() {
+            backgroundShapes.innerHTML = '';
+            
+            const shapes = [];
+            const animations = ['floatShape1', 'floatShape2', 'floatShape3', 'floatShape4', 'pulseShape', 'spiralShape'];
+            
+            // Crear cuadrados (aumentado a 12)
+            for (let i = 0; i < 12; i++) {
+                const square = document.createElement('div');
+                square.classList.add('shape', 'square');
+                const size = 30 + Math.random() * 80;
+                square.style.width = `${size}px`;
+                square.style.height = `${size}px`;
+                square.style.left = `${Math.random() * 100}%`;
+                square.style.top = `${Math.random() * 100}%`;
+                square.style.borderColor = `#${Math.floor(Math.random()*16777215).toString(16)}`;
+                square.style.opacity = '0.04';
+                
+                const randomAnimation = animations[Math.floor(Math.random() * animations.length)];
+                square.style.animation = `${randomAnimation} ${15 + Math.random() * 25}s infinite ease-in-out`;
+                square.style.animationDelay = `${Math.random() * 5}s`;
+                
+                shapes.push(square);
+            }
+            
+            // Crear triángulos (aumentado a 10)
+            for (let i = 0; i < 10; i++) {
+                const triangle = document.createElement('div');
+                triangle.classList.add('shape', 'triangle');
+                const size = 25 + Math.random() * 60;
+                triangle.style.borderLeftWidth = `${size}px`;
+                triangle.style.borderRightWidth = `${size}px`;
+                triangle.style.borderBottomWidth = `${size}px`;
+                triangle.style.borderBottomColor = `#${Math.floor(Math.random()*16777215).toString(16)}`;
+                triangle.style.left = `${Math.random() * 100}%`;
+                triangle.style.top = `${Math.random() * 100}%`;
+                triangle.style.opacity = '0.04';
+                
+                const randomAnimation = animations[Math.floor(Math.random() * animations.length)];
+                triangle.style.animation = `${randomAnimation} ${18 + Math.random() * 28}s infinite ease-in-out`;
+                triangle.style.animationDelay = `${Math.random() * 5}s`;
+                
+                shapes.push(triangle);
+            }
+            
+            // Crear círculos (aumentado a 8)
+            for (let i = 0; i < 8; i++) {
+                const circle = document.createElement('div');
+                circle.classList.add('shape', 'circle');
+                const size = 30 + Math.random() * 70;
+                circle.style.width = `${size}px`;
+                circle.style.height = `${size}px`;
+                circle.style.left = `${Math.random() * 100}%`;
+                circle.style.top = `${Math.random() * 100}%`;
+                circle.style.borderColor = `#${Math.floor(Math.random()*16777215).toString(16)}`;
+                circle.style.opacity = '0.04';
+                
+                const randomAnimation = animations[Math.floor(Math.random() * animations.length)];
+                circle.style.animation = `${randomAnimation} ${12 + Math.random() * 22}s infinite ease-in-out`;
+                circle.style.animationDelay = `${Math.random() * 5}s`;
+                
+                shapes.push(circle);
+            }
+            
+            shapes.forEach(shape => {
+                backgroundShapes.appendChild(shape);
+            });
+        }
+        
+        window.addEventListener('load', createShapes);
+        window.addEventListener('resize', createShapes);
+    </script>
+    <!-- Botón flotante de WhatsApp -->
+<div class="whatsapp-btn-container" id="whatsappBtn">
+    <a href="https://wa.me/584143044715"
+       target="_blank" 
+       class="whatsapp-btn"
+       aria-label="Contactar por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span class="whatsapp-tooltip">¡Contáctanos!</span>
+        <span class="whatsapp-pulse"></span>
+    </a>
+</div>
+</body>
+</html>

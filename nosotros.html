@@ -1,0 +1,1848 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOSOTROS - Herrajes y Decoración</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ANIMACIONES MEJORADAS */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-60px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(60px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.8;
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        @keyframes rotate3D {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(360deg); }
+        }
+
+        @keyframes borderGlow {
+            0%, 100% { box-shadow: 0 0 10px rgba(220, 38, 38, 0.3); }
+            50% { box-shadow: 0 0 25px rgba(220, 38, 38, 0.6); }
+        }
+
+        /* CLASES DE ANIMACIÓN */
+        .animate-fadeInUp {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .animate-slideInLeft {
+            animation: slideInLeft 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .animate-slideInRight {
+            animation: slideInRight 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .animate-scaleIn {
+            animation: scaleIn 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .animate-pulse {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .animate-gradient {
+            background: linear-gradient(-45deg, #dc2626, #b91c1c, #991b1b, #7f1d1d);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+        }
+
+        /* FONDOS CON DEGRADADOS */
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: #2c2c2c;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            overflow-x: hidden;
+        }
+
+        /* PATRÓN SUTIL DE FONDO */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                radial-gradient(circle at 15% 50%, rgba(220, 38, 38, 0.03) 0%, transparent 20%),
+                radial-gradient(circle at 85% 30%, rgba(220, 38, 38, 0.03) 0%, transparent 20%),
+                radial-gradient(circle at 50% 80%, rgba(37, 99, 235, 0.03) 0%, transparent 20%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* HEADER MEJORADO */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            animation: slideInDown 0.6s ease-out;
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        .logo {
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: #dc2626;
+            position: relative;
+            padding: 3px 0;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #dc2626, transparent);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover::after {
+            transform: scaleX(1);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #666;
+            font-weight: 600;
+            font-size: 13px;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 3px 0;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #dc2626;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #dc2626;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* HERO SECTION MEJORADA */
+        .hero {
+            height: 85vh;
+            min-height: 700px;
+            background:
+                linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 100%),
+                url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(220, 38, 38, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(37, 99, 235, 0.1) 0%, transparent 50%);
+            animation: gradientShift 10s ease infinite;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            margin-bottom: 30px;
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+            background: linear-gradient(45deg, #fff, #f3f4f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 2px 30px rgba(0,0,0,0.1);
+            animation: fadeInUp 1s ease-out 0.2s forwards;
+            opacity: 0;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+            animation: fadeInUp 1.2s ease-out 0.4s forwards;
+            opacity: 0;
+        }
+
+        .btn {
+            padding: 16px 40px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.7s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(220, 38, 38, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255,255,255,0.2);
+        }
+
+        /* VIDEO SECTION MEJORADA */
+        .video-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 120px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(220, 38, 38, 0.05) 0%, transparent 70%);
+            animation: gradientShift 15s ease infinite;
+        }
+
+        .video-section h2 {
+            font-size: 3.5rem;
+            margin-bottom: 60px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(45deg, #1a1a1a, #dc2626);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .video-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+            height: 500px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+            animation: scaleIn 1s ease-out 0.3s forwards;
+            opacity: 0;
+        }
+
+        .video-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            background-size: 200% 200%;
+            animation: shimmer 2s infinite;
+        }
+
+        .play-button {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            z-index: 2;
+            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.4);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(220, 38, 38, 0.6);
+        }
+
+        /* SOLUCIONES POR ESPACIO - MEJORADA */
+        .soluciones {
+            padding: 120px 40px;
+            background: white;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .soluciones::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #dc2626, transparent);
+        }
+
+        .soluciones h2 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: #1a1a1a;
+            animation: slideInLeft 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .soluciones-subtitle {
+            margin-bottom: 60px;
+            color: #666;
+            font-size: 16px;
+            font-weight: 500;
+            animation: slideInLeft 0.9s ease-out forwards;
+            opacity: 0;
+        }
+
+        .soluciones-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .soluciones-image {
+            height: 500px;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+            animation: slideInLeft 1s ease-out 0.2s forwards;
+            opacity: 0;
+        }
+
+        .soluciones-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .soluciones-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .soluciones-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .solucion-item {
+            animation: fadeInUp 1s ease-out forwards;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .solucion-item:nth-child(1) { animation-delay: 0.2s; }
+        .solucion-item:nth-child(2) { animation-delay: 0.4s; }
+        .solucion-item:nth-child(3) { animation-delay: 0.6s; }
+
+        .solucion-item:hover {
+            transform: translateX(10px);
+        }
+
+        .solucion-imagen {
+            width: 100%;
+            height: 200px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+        }
+
+        .solucion-imagen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .solucion-item:hover .solucion-imagen img {
+            transform: scale(1.1);
+        }
+
+        .solucion-imagen::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.3), transparent);
+        }
+
+        .solucion-item p {
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 1.4;
+            color: #1a1a1a;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .solucion-icon {
+            color: #dc2626;
+            font-size: 20px;
+        }
+
+        /* MISION VISION - MEJORADA */
+        .mision-vision {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+            color: white;
+            padding: 120px 40px;
+            margin-top: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mision-vision::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(220, 38, 38, 0.1) 0%, transparent 70%);
+            animation: gradientShift 20s ease infinite;
+        }
+
+        .mision-vision-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            margin-bottom: 100px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .mision-vision-container:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .mision-vision-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            padding: 60px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .mision-vision-box:hover {
+            transform: translateY(-5px);
+            border-color: rgba(220, 38, 38, 0.3);
+            box-shadow: 0 20px 60px rgba(220, 38, 38, 0.2);
+        }
+
+        .mision-vision-box h3 {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .mision-vision-box h3 i {
+            color: #dc2626;
+            font-size: 24px;
+        }
+
+        .mision-vision-box p {
+            font-size: 17px;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .mision-vision-image {
+            width: 100%;
+            height: 400px;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+            animation: slideInRight 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .mision-vision-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .mision-vision-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* VALORES - MEJORADA */
+        .valores {
+            background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
+            color: white;
+            padding: 120px 40px;
+            position: relative;
+        }
+
+        .valores::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #dc2626, transparent);
+        }
+
+        .valores-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .valores-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            padding: 60px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            animation: slideInLeft 0.8s ease-out forwards;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .valores-box:hover {
+            transform: translateY(-5px);
+            border-color: rgba(220, 38, 38, 0.3);
+            box-shadow: 0 20px 60px rgba(220, 38, 38, 0.2);
+        }
+
+        .valores-box h3 {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .valores-box h3 i {
+            color: #dc2626;
+            font-size: 24px;
+        }
+
+        .valores-box p {
+            font-size: 17px;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .valores-image {
+            width: 100%;
+            height: 400px;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+            animation: slideInRight 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .valores-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .valores-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* DISTRIBUCION - MEJORADA */
+        .distribucion {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 120px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .distribucion::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.05) 0%, transparent 70%);
+            animation: gradientShift 12s ease infinite;
+        }
+
+        .distribucion-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .distribucion h2 {
+            font-size: 3rem;
+            margin-bottom: 70px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            text-align: center;
+            background: linear-gradient(45deg, #1a1a1a, #2563eb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .distribucion-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            align-items: center;
+        }
+
+        .distribucion-text {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #4b5563;
+            animation: slideInLeft 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .distribucion-text p {
+            margin-bottom: 30px;
+            font-size: 17px;
+        }
+
+        .truck-circle {
+            width: 300px;
+            height: 300px;
+            border: 3px solid rgba(37, 99, 235, 0.3);
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            color: white;
+            animation:
+                slideInRight 0.8s ease-out forwards,
+                float 4s ease-in-out infinite,
+                borderGlow 3s ease-in-out infinite;
+            opacity: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .truck-circle::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: rotate3D 20s linear infinite;
+        }
+
+        .truck-circle i {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .truck-circle span {
+            font-size: 20px;
+            font-weight: 600;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        /* DESTACADOS - MEJORADA */
+        .destacados {
+            background: white;
+            padding: 120px 40px;
+            position: relative;
+        }
+
+        .destacados::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #dc2626, transparent);
+        }
+
+        .destacados-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .destacados h2 {
+            font-size: 3rem;
+            margin-bottom: 70px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            text-align: center;
+            background: linear-gradient(45deg, #1a1a1a, #dc2626);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .destacados-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .destacado-item {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            padding: 0;
+            align-items: stretch;
+            border: 1px solid rgba(229, 231, 235, 0.5);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: fadeInUp 0.8s ease-out forwards;
+            animation-fill-mode: both;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            opacity: 0;
+        }
+
+        .destacado-item:nth-child(1) { animation-delay: 0.1s; }
+        .destacado-item:nth-child(2) { animation-delay: 0.2s; }
+        .destacado-item:nth-child(3) { animation-delay: 0.3s; }
+        .destacado-item:nth-child(4) { animation-delay: 0.4s; }
+
+        .destacado-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(220, 38, 38, 0.15);
+            border-color: rgba(220, 38, 38, 0.2);
+        }
+
+        .destacado-imagen {
+            width: 100%;
+            height: 100%;
+            min-height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .destacado-imagen::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(0,0,0,0.1), transparent);
+        }
+
+        .destacado-item:nth-child(1) .destacado-imagen {
+            background-image: url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+        }
+
+        .destacado-item:nth-child(2) .destacado-imagen {
+            background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+        }
+
+        .destacado-item:nth-child(3) .destacado-imagen {
+            background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+        }
+
+        .destacado-item:nth-child(4) .destacado-imagen {
+            background-image: url('https://images.unsplash.com/photo-1575909812264-6902b55846ad?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+        }
+
+        .destacado-texto {
+            padding: 40px 30px;
+            display: flex;
+            align-items: center;
+        }
+
+        .destacado-texto h3 {
+            font-size: 22px;
+            margin-bottom: 12px;
+            font-weight: 700;
+            line-height: 1.4;
+            color: #1a1a1a;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .destacado-texto h3 i {
+            color: #dc2626;
+            font-size: 20px;
+        }
+
+        /* ECOSISTEMAS - MEJORADA */
+        .ecosistemas {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 120px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ecosistemas::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(220, 38, 38, 0.05) 0%, transparent 70%);
+            animation: gradientShift 15s ease infinite;
+        }
+
+        .ecosistemas-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .ecosistemas h2 {
+            font-size: 3rem;
+            margin-bottom: 80px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(45deg, #1a1a1a, #dc2626);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .logos-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo-circle {
+            width: 150px;
+            height: 150px;
+            background: white;
+            border: 2px solid rgba(229, 231, 235, 0.5);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            font-weight: 800;
+            font-size: 14px;
+            text-align: center;
+            padding: 20px;
+            color: #1a1a1a;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: scaleIn 0.6s ease-out forwards;
+            opacity: 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .logo-circle::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #dc2626, #b91c1c, #991b1b);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .logo-circle:hover::before {
+            opacity: 1;
+        }
+
+        .logo-circle:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(220, 38, 38, 0.2);
+            border-color: transparent;
+            color: white;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        .logo-circle.highlight {
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 15px 35px rgba(220, 38, 38, 0.3);
+        }
+
+        .logo-circle.highlight:hover {
+            background: linear-gradient(135deg, #b91c1c, #dc2626);
+            box-shadow: 0 25px 50px rgba(220, 38, 38, 0.4);
+        }
+
+        .logo-circle input[type="file"] {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .logo-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 50%;
+            padding: 15px;
+        }
+
+        .logo-circle .placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            pointer-events: none;
+        }
+
+        .logo-circle .placeholder i {
+            font-size: 30px;
+            color: #dc2626;
+            opacity: 0.5;
+        }
+
+        .logo-circle .placeholder span {
+            font-size: 12px;
+            opacity: 0.7;
+        }
+
+        .logo-circle.has-image .placeholder {
+            display: none;
+        }
+
+        /* FOOTER MEJORADO */
+        footer {
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+            color: white;
+            padding: 80px 40px 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #dc2626, transparent);
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px;
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-section h3 {
+            font-size: 16px;
+            margin-bottom: 25px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: white;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background: #dc2626;
+        }
+
+        .footer-section p {
+            font-size: 15px;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 10px;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 25px;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.9);
+        }
+
+        .social-icon:hover {
+            background: #dc2626;
+            transform: translateY(-3px);
+            border-color: #dc2626;
+            box-shadow: 0 10px 20px rgba(220, 38, 38, 0.3);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a:hover {
+            color: #dc2626;
+            transform: translateX(5px);
+        }
+
+        .footer-links a i {
+            font-size: 12px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-links a:hover i {
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 30px;
+            text-align: center;
+            font-size: 14px;
+            color: rgba(255,255,255,0.6);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .soluciones-container,
+            .mision-vision-container,
+            .valores-container,
+            .distribucion-content,
+            .logos-grid {
+                gap: 50px;
+            }
+
+            .logos-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                height: 70vh;
+                min-height: 500px;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+
+            .soluciones-container,
+            .mision-vision-container,
+            .valores-container,
+            .distribucion-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .destacados-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .destacado-item {
+                grid-template-columns: 1fr;
+            }
+
+            .logos-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+
+            .logo-circle {
+                width: 130px;
+                height: 130px;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .footer-section {
+                text-align: center;
+            }
+
+            .footer-section h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .footer-socials {
+                justify-content: center;
+            }
+
+            .footer-links a {
+                justify-content: center;
+            }
+
+            .soluciones h2,
+            .video-section h2,
+            .distribucion h2,
+            .destacados h2,
+            .ecosistemas h2 {
+                font-size: 2.2rem;
+            }
+
+            .mision-vision-box h3,
+            .valores-box h3 {
+                font-size: 1.7rem;
+            }
+
+            nav ul {
+                gap: 20px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-container,
+            .hero,
+            .video-section,
+            .soluciones,
+            .mision-vision,
+            .valores,
+            .distribucion,
+            .destacados,
+            .ecosistemas,
+            footer {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .logos-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .logo-circle {
+                width: 150px;
+                height: 150px;
+            }
+
+            .truck-circle {
+                width: 250px;
+                height: 250px;
+            }
+
+            .soluciones h2,
+            .video-section h2,
+            .distribucion h2,
+            .destacados h2,
+            .ecosistemas h2 {
+                font-size: 1.8rem;
+            }
+
+            .mision-vision-box,
+            .valores-box {
+                padding: 40px 30px;
+            }
+
+            nav ul {
+                gap: 15px;
+            }
+
+            nav a {
+                font-size: 11px;
+            }
+        }
+
+        /* OBSERVER PARA ANIMACIONES */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-container">
+            <div class="logo animate-scaleIn" style="animation-delay: 0.1s;">NOSOTROS</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="animate-fadeInUp" style="animation-delay: 0.2s;">Inicio</a></li>
+                    <li><a href="#nosotros" class="animate-fadeInUp" style="animation-delay: 0.3s;">Nosotros</a></li>
+                    <li><a href="#servicios" class="animate-fadeInUp" style="animation-delay: 0.4s;">Servicios</a></li>
+                    <li><a href="#blog" class="animate-fadeInUp" style="animation-delay: 0.5s;">Blog</a></li>
+                    <li><a href="#contacto" class="animate-fadeInUp" style="animation-delay: 0.6s;">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>EXPERIENCIA<br>SENSORIAL Y<br>TÉCNICA</h1>
+            <div class="hero-buttons">
+                <button class="btn btn-primary">
+                    <i class="fas fa-store"></i> VISITAR TIENDA ONLINE
+                </button>
+                <button class="btn btn-secondary">
+                    <i class="fas fa-map-marker-alt"></i> UBICACIÓN TIENDA FÍSICA
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- VIDEO SECTION -->
+    <section class="video-section" id="nosotros">
+        <h2>VIDEO</h2>
+        <div class="video-container">
+            <div class="play-button">
+                <i class="fas fa-play"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOLUCIONES POR ESPACIO -->
+    <section class="soluciones" id="servicios">
+        <h2>SOLUCIONES POR ESPACIO</h2>
+        <p class="soluciones-subtitle">Acceso directo a colecciones específicas:</p>
+        <div class="soluciones-container">
+            <div class="soluciones-image">
+                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cocina moderna con herrajes">
+            </div>
+            <div class="soluciones-grid">
+                <div class="solucion-item">
+                    <div class="solucion-imagen">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cocina de alto desempeño">
+                    </div>
+                    <p><i class="fas fa-utensils solucion-icon"></i> Cocinas de Alto Desempeño</p>
+                </div>
+                <div class="solucion-item">
+                    <div class="solucion-imagen">
+                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Closet organizado">
+                    </div>
+                    <p><i class="fas fa-tshirt solucion-icon"></i> Closets Organizados</p>
+                </div>
+                <div class="solucion-item">
+                    <div class="solucion-imagen">
+                        <img src="https://images.unsplash.com/photo-1575909812264-6902b55846ad?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mobiliario de autor">
+                    </div>
+                    <p><i class="fas fa-couch solucion-icon"></i> Mobiliario de Autor y Revestimientos de Pared</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MISION Y VISION -->
+    <section class="mision-vision">
+        <div class="mision-vision-container">
+            <div class="mision-vision-box">
+                <h3><i class="fas fa-bullseye"></i> Misión</h3>
+                <p>Proveer soluciones integrales en herrajes y acabados decorativos que transforman espacios ordinarios en experiencias extraordinarias.</p>
+            </div>
+            <div class="mision-vision-image">
+                <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Proyecto interior">
+            </div>
+        </div>
+        <div class="mision-vision-container" style="margin-top: 60px;">
+            <div class="mision-vision-image">
+                <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Tecnología de movimiento">
+            </div>
+            <div class="mision-vision-box">
+                <h3><i class="fas fa-eye"></i> Visión</h3>
+                <p>Ser el referente indiscutible de innovación y calidad en el sector de herrajes y decoración de interiores en toda la región.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- VALORES -->
+    <section class="valores">
+        <div class="valores-container">
+            <div class="valores-box">
+                <h3><i class="fas fa-gem"></i> Valores</h3>
+                <p>Precisión técnica, curaduría de vanguardia, compromiso con el artesano y honestidad comercial.</p>
+            </div>
+            <div class="valores-image">
+                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Elementos decorativos">
+            </div>
+        </div>
+    </section>
+
+    <!-- DISTRIBUCION -->
+    <section class="distribucion">
+        <div class="distribucion-container">
+            <h2>DE CARACAS PARA TODA VENEZUELA</h2>
+            <div class="distribucion-content">
+                <div class="distribucion-text">
+                    <p>Contamos con una logística optimizada para envíos nacionales, garantizando que el herraje llegue intacto y a tiempo a cualquier obra en el país.</p>
+                    <p>Nuestra red de distribución cubre desde los Andes hasta la costa caribeña, con seguimiento en tiempo real y garantía de entrega.</p>
+                </div>
+                <div class="truck-circle">
+                    <i class="fas fa-truck"></i>
+                    <span>Envíos a Todo el País</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DESTACADOS DE TEMPORADA -->
+    <section class="destacados">
+        <div class="destacados-container">
+            <h2>DESTACADOS DE TEMPORADA</h2>
+            <div class="destacados-grid">
+                <div class="destacado-item">
+                    <div class="destacado-imagen"></div>
+                    <div class="destacado-texto">
+                        <h3><i class="fas fa-shield-alt"></i> Durabilidad y texturas únicas</h3>
+                    </div>
+                </div>
+                <div class="destacado-item">
+                    <div class="destacado-imagen"></div>
+                    <div class="destacado-texto">
+                        <h3><i class="fas fa-crown"></i> El toque final de elegancia</h3>
+                    </div>
+                </div>
+                <div class="destacado-item">
+                    <div class="destacado-imagen"></div>
+                    <div class="destacado-texto">
+                        <h3><i class="fas fa-tree"></i> La esencia natural de la madera</h3>
+                    </div>
+                </div>
+                <div class="destacado-item">
+                    <div class="destacado-imagen"></div>
+                    <div class="destacado-texto">
+                        <h3><i class="fas fa-cogs"></i> Tecnología de movimiento alemana</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ECOSISTEMAS DE ALIADOS -->
+    <section class="ecosistemas">
+        <div class="ecosistemas-container">
+            <h2>ECOSISTEMAS DE ALIADOS</h2>
+            <div class="logos-grid">
+                <label class="logo-circle" style="animation-delay: 0.1s;">
+                    <input type="file" accept="image/*" onchange="loadImage(this)">
+                    <div class="placeholder">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <span>Pertech</span>
+                    </div>
+                </label>
+                <label class="logo-circle highlight" style="animation-delay: 0.2s;">
+                    <input type="file" accept="image/*" onchange="loadImage(this)">
+                    <div class="placeholder">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <span>BLUM</span>
+                    </div>
+                </label>
+                <label class="logo-circle" style="animation-delay: 0.3s;">
+                    <input type="file" accept="image/*" onchange="loadImage(this)">
+                    <div class="placeholder">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <span>Saviola</span>
+                    </div>
+                </label>
+                <label class="logo-circle" style="animation-delay: 0.4s;">
+                    <input type="file" accept="image/*" onchange="loadImage(this)">
+                    <div class="placeholder">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <span>Abgroup</span>
+                    </div>
+                </label>
+                <label class="logo-circle" style="animation-delay: 0.5s;">
+                    <input type="file" accept="image/*" onchange="loadImage(this)">
+                    <div class="placeholder">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <span>Bari</span>
+                    </div>
+                </label>
+                <label class="logo-circle" style="animation-delay: 0.6s;">
+                    <input type="file" accept="image/*" onchange="loadImage(this)">
+                    <div class="placeholder">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <span>Davet</span>
+                    </div>
+                </label>
+                <label class="logo-circle" style="animation-delay: 0.7s;">
+                    <input type="file" accept="image/*" onchange="loadImage(this)">
+                    <div class="placeholder">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <span>ATZ</span>
+                    </div>
+                </label>
+                <label class="logo-circle" style="animation-delay: 0.8s;">
+                    <input type="file" accept="image/*" onchange="loadImage(this)">
+                    <div class="placeholder">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <span>Ellalipi</span>
+                    </div>
+                </label>
+                <label class="logo-circle" style="animation-delay: 0.9s;">
+                    <input type="file" accept="image/*" onchange="loadImage(this)">
+                    <div class="placeholder">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <span>ORAC</span>
+                    </div>
+                </label>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contacto">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Dirección:</h3>
+                <p>Ira Avenida de los Palos Grandes,<br>Edificio Francisco de Miranda,<br>Caracas</p>
+            </div>
+            <div class="footer-section">
+                <h3>Lunes a Viernes</h3>
+                <p>de 8:00 am a 4:00 pm</p>
+                <div class="footer-socials">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Menú</h3>
+                <ul class="footer-links">
+                    <li><a href="#inicio">Inicio <i class="fas fa-arrow-right"></i></a></li>
+                    <li><a href="#nosotros">Nosotros <i class="fas fa-arrow-right"></i></a></li>
+                    <li><a href="#servicios">Tienda <i class="fas fa-arrow-right"></i></a></li>
+                    <li><a href="#blog">Blog <i class="fas fa-arrow-right"></i></a></li>
+                    <li><a href="#contacto">Contacto <i class="fas fa-arrow-right"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 NOSOTROS - Herrajes y Decoración. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        function loadImage(input) {
+            const file = input.files[0];
+            if (file) {
+                const reader = new FileReader();
+                const label = input.closest('.logo-circle');
+
+                reader.onload = function(e) {
+                    const existingImg = label.querySelector('img');
+                    if (existingImg) {
+                        existingImg.remove();
+                    }
+
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    label.appendChild(img);
+                    label.classList.add('has-image');
+                };
+
+                reader.readAsDataURL(file);
+            }
+        }
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (entry.target.classList.contains('animate-on-scroll')) {
+                        entry.target.classList.add('animated');
+                    }
+
+                    if (entry.target.classList.contains('animate-fadeInUp') ||
+                        entry.target.classList.contains('animate-slideInLeft') ||
+                        entry.target.classList.contains('animate-slideInRight') ||
+                        entry.target.classList.contains('animate-scaleIn')) {
+                        entry.target.style.animationPlayState = 'running';
+                    }
+
+                    entry.target.style.opacity = '1';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-fadeInUp, .animate-slideInLeft, .animate-slideInRight, .animate-scaleIn, .animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        document.querySelector('.play-button').addEventListener('click', function() {
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+            setTimeout(() => {
+                this.innerHTML = '<i class="fas fa-play"></i>';
+                alert('Reproduciendo video corporativo');
+            }, 1000);
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', function() {
+                if (this.classList.contains('btn-primary')) {
+                    alert('Redirigiendo a la tienda online...');
+                } else if (this.classList.contains('btn-secondary')) {
+                    alert('Mostrando ubicación en Google Maps...');
+                }
+            });
+        });
+
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.8s ease';
+
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        document.querySelectorAll('.solucion-imagen, .mision-vision-image, .valores-image').forEach(imgContainer => {
+            imgContainer.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.05)';
+            });
+
+            imgContainer.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
