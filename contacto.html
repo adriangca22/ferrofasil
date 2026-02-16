@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>Contacto - INICIOPÍA Hardware</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -17,7 +17,7 @@
             color: #333;
             background-color: #f8fafc;
             line-height: 1.6;
-            overflow-x: hidden; /* Solución principal */
+            overflow-x: hidden;
             width: 100%;
             position: relative;
         }
@@ -141,7 +141,7 @@
         }
 
         .nav-menu a:hover {
-            color: #dc2626;
+            color: #1b1b1b;
         }
 
         .nav-menu a:hover::after {
@@ -165,7 +165,7 @@
         .hamburger-btn span {
             width: 100%;
             height: 3px;
-            background: #dc2626;
+            background: #111111;
             border-radius: 3px;
             transition: all 0.3s ease;
         }
@@ -222,6 +222,7 @@
             text-shadow: 0 2px 20px rgba(0,0,0,0.3);
             max-width: 100%;
             padding: 0 1rem;
+            word-wrap: break-word;
         }
 
         .contact-hero p {
@@ -232,6 +233,7 @@
             opacity: 0;
             max-width: 100%;
             padding: 0 1rem;
+            word-wrap: break-word;
         }
 
         /* SECCIÓN DE CONTACTO PRINCIPAL */
@@ -244,6 +246,7 @@
             gap: 2rem;
             position: relative;
             width: 100%;
+            overflow-x: hidden;
         }
 
         /* INFORMACIÓN DE CONTACTO */
@@ -260,6 +263,7 @@
             position: relative;
             padding-bottom: 0.8rem;
             max-width: 100%;
+            word-wrap: break-word;
         }
 
         .contact-info h2::after {
@@ -279,6 +283,7 @@
             line-height: 1.6;
             margin-bottom: 1.5rem;
             max-width: 100%;
+            word-wrap: break-word;
         }
 
         /* TARJETAS DE INFORMACIÓN */
@@ -301,7 +306,6 @@
             transition: all 0.3s ease;
             border: 1px solid rgba(229, 231, 235, 0.5);
             width: 100%;
-            flex-wrap: wrap;
         }
 
         .info-card:hover {
@@ -324,12 +328,18 @@
             box-shadow: 0 8px 16px rgba(220, 38, 38, 0.2);
         }
 
+        .info-content {
+            flex: 1;
+            min-width: 0; /* Previene desbordamiento en flex */
+        }
+
         .info-content h3 {
             font-size: 1.1rem;
             font-weight: 700;
             margin-bottom: 0.4rem;
             color: #1a1a1a;
             max-width: 100%;
+            word-wrap: break-word;
         }
 
         .info-content p {
@@ -338,6 +348,7 @@
             font-size: 0.95rem;
             line-height: 1.5;
             max-width: 100%;
+            word-wrap: break-word;
         }
 
         .info-content a {
@@ -346,7 +357,7 @@
             transition: color 0.3s ease;
             display: inline-block;
             max-width: 100%;
-            overflow-wrap: break-word;
+            word-wrap: break-word;
         }
 
         .info-content a:hover {
@@ -369,6 +380,7 @@
             margin-bottom: 1rem;
             color: #1a1a1a;
             max-width: 100%;
+            word-wrap: break-word;
         }
 
         .social-grid {
@@ -391,7 +403,7 @@
             transition: all 0.3s ease;
             border: 1px solid transparent;
             text-align: center;
-            min-width: 0;
+            width: 100%;
         }
 
         .social-item:hover {
@@ -408,7 +420,7 @@
         .social-item span {
             font-size: 0.85rem;
             font-weight: 600;
-            overflow-wrap: break-word;
+            word-wrap: break-word;
         }
 
         .social-item.facebook:hover i { color: #1877f2; }
@@ -437,6 +449,7 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             max-width: 100%;
+            word-wrap: break-word;
         }
 
         .contact-form {
@@ -467,6 +480,7 @@
             display: flex;
             align-items: center;
             gap: 6px;
+            word-wrap: break-word;
         }
 
         .form-group label i {
@@ -530,6 +544,7 @@
             margin-bottom: 0;
             cursor: pointer;
             max-width: calc(100% - 30px);
+            word-wrap: break-word;
         }
 
         /* BOTÓN DE ENVÍO */
@@ -616,6 +631,7 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             max-width: 100%;
+            word-wrap: break-word;
         }
 
         .map-wrapper {
@@ -632,13 +648,14 @@
             border: none;
         }
 
-        /* BOTÓN FLOTANTE WHATSAPP */
+        /* BOTÓN FLOTANTE WHATSAPP - CORREGIDO */
         .whatsapp-float {
             position: fixed;
             bottom: 20px;
             right: 20px;
             z-index: 999;
             animation: float 3s ease-in-out infinite;
+            max-width: calc(100% - 40px); /* Evita que se salga del viewport */
         }
 
         .whatsapp-float a {
@@ -731,6 +748,7 @@
             position: relative;
             padding-bottom: 0.4rem;
             max-width: 100%;
+            word-wrap: break-word;
         }
 
         .footer-section h3::after {
@@ -748,6 +766,7 @@
             line-height: 1.6;
             font-size: 0.9rem;
             max-width: 100%;
+            word-wrap: break-word;
         }
 
         .footer-links {
@@ -756,6 +775,7 @@
 
         .footer-links li {
             margin-bottom: 0.6rem;
+            word-wrap: break-word;
         }
 
         .footer-links a {
@@ -766,7 +786,7 @@
             align-items: center;
             gap: 6px;
             max-width: 100%;
-            overflow-wrap: break-word;
+            word-wrap: break-word;
         }
 
         .footer-links a:hover {
@@ -776,6 +796,7 @@
 
         .footer-links a i {
             font-size: 10px;
+            flex-shrink: 0;
         }
 
         .footer-bottom {
@@ -785,9 +806,10 @@
             color: #9ca3af;
             font-size: 0.85rem;
             max-width: 100%;
+            word-wrap: break-word;
         }
 
-        /* RESPONSIVE - MEJORAS ADICIONALES */
+        /* RESPONSIVE - MEJORAS */
         @media (min-width: 1025px) {
             .contact-main {
                 grid-template-columns: 1fr 1.2fr;
@@ -888,6 +910,17 @@
             }
         }
 
+        @media (max-width: 768px) {
+            .info-card {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+            
+            .info-content {
+                flex: 1;
+            }
+        }
+
         @media (max-width: 480px) {
             .contact-hero {
                 height: 30vh;
@@ -907,34 +940,33 @@
             }
 
             .info-card {
-                flex-direction: column;
-                text-align: center;
-                gap: 0.8rem;
+                flex-direction: row;
+                align-items: flex-start;
                 padding: 1rem;
             }
 
             .info-icon {
-                width: 45px;
-                height: 45px;
-                font-size: 18px;
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
             }
 
             .social-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
             }
 
             .footer-container {
                 grid-template-columns: 1fr;
-                text-align: center;
+                text-align: left;
             }
 
             .footer-section h3::after {
-                left: 50%;
-                transform: translateX(-50%);
+                left: 0;
+                transform: none;
             }
 
             .footer-links a {
-                justify-content: center;
+                justify-content: flex-start;
             }
             
             .nav-menu {
@@ -952,6 +984,37 @@
             .form-group textarea {
                 font-size: 0.9rem;
                 padding: 0.7rem 0.9rem;
+            }
+            
+            .whatsapp-float a {
+                width: 45px;
+                height: 45px;
+                font-size: 22px;
+            }
+            
+            .whatsapp-tooltip {
+                display: none; /* Ocultar tooltip en móviles muy pequeños */
+            }
+        }
+
+        @media (max-width: 360px) {
+            .info-card {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .info-content {
+                text-align: center;
+            }
+            
+            .social-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .whatsapp-float {
+                bottom: 10px;
+                right: 10px;
             }
         }
     </style>
