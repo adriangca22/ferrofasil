@@ -113,7 +113,31 @@ background: transparent;
 80% { transform: translate(-40px, -50px) rotate(180deg) scale(0.95); }
 }
 
+/* ANIMACIONES */
+@keyframes fadeIn {
+from { opacity: 0; }
+to { opacity: 1; }
+}
 
+@keyframes fadeInUp {
+from { opacity: 0; transform: translateY(40px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+from { opacity: 0; transform: translateY(-30px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+from { opacity: 0; transform: translateY(40px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes zoomIn {
+from { transform: scale(1.15); }
+to { transform: scale(1); }
+}
 /* HEADER CORREGIDO - CON MENÚ A LA DERECHA */
 header {
     position: fixed;
@@ -1433,7 +1457,7 @@ font-size: 0.75rem;
         <ul class="nav-menu" id="navMenu">
             <li><a href="#hero">Inicio</a></li>
             <li><a href="nosotros.html">Nosotros</a></li>
-            <li><a href="#services">Servicios</a></li>
+            
             <li><a href="#blog">Blog</a></li>
             <li><a href="contacto.html">Contacto</a></li>
         </ul>
