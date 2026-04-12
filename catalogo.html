@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>FERROFASIL - Catálogos</title>
+    <title>FERROFASIL - Catálogos 2026</title>
     <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-        
+    <!-- AOS Library para animaciones al scroll -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
     <style>
         * {
             margin: 0;
@@ -21,9 +23,90 @@
             line-height: 1.5;
             scroll-behavior: smooth;
             position: relative;
+            overflow-x: hidden;
         }
 
-        /* FIGURAS GEOMÉTRICAS DE FONDO */
+        /* ANIMACIONES MODERNAS 2026 */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 5px rgba(220, 38, 38, 0.3), 0 0 10px rgba(220, 38, 38, 0.2); }
+            50% { box-shadow: 0 0 20px rgba(220, 38, 38, 0.6), 0 0 30px rgba(220, 38, 38, 0.4); }
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(200%) rotate(45deg); }
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes rotateIn {
+            from {
+                opacity: 0;
+                transform: rotate(-10deg) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: rotate(0deg) scale(1);
+            }
+        }
+
+        @keyframes heroShine {
+            0% {
+                opacity: 0;
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            }
+            50% {
+                opacity: 0.6;
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(100%) translateY(100%) rotate(45deg);
+            }
+        }
+
+        /* Fondo con efecto de partículas moderno */
         body::before {
             content: '';
             position: fixed;
@@ -33,15 +116,16 @@
             height: 100%;
             pointer-events: none;
             z-index: -1;
-            background-image: 
-                repeating-linear-gradient(45deg, rgba(200, 200, 210, 0.08) 0px, rgba(200, 200, 210, 0.08) 2px, transparent 2px, transparent 8px),
-                repeating-linear-gradient(135deg, rgba(180, 180, 190, 0.06) 0px, rgba(180, 180, 190, 0.06) 1px, transparent 1px, transparent 6px),
-                radial-gradient(circle at 20% 30%, rgba(150, 150, 160, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(130, 130, 140, 0.04) 0%, transparent 60%);
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(220, 38, 38, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(220, 38, 38, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.02) 0%, transparent 100%);
+            animation: gradientShift 10s ease infinite;
+            background-size: 200% 200%;
         }
 
-        body::after {
-            content: '';
+        /* Partículas flotantes */
+        .particles {
             position: fixed;
             top: 0;
             left: 0;
@@ -49,10 +133,14 @@
             height: 100%;
             pointer-events: none;
             z-index: -1;
-            background-image: 
-                radial-gradient(circle at 10% 15%, rgba(160, 160, 170, 0.05) 0%, transparent 150px),
-                radial-gradient(circle at 95% 85%, rgba(140, 140, 150, 0.06) 0%, transparent 200px),
-                radial-gradient(circle at 40% 60%, rgba(170, 170, 180, 0.04) 0%, transparent 180px);
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.3), rgba(220, 38, 38, 0.1));
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
         }
 
         @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap');
@@ -73,14 +161,21 @@
             to { opacity: 1; }
         }
 
-        /* HEADER */
+        /* HEADER CON EFECTO GLASS */
         header {
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: #ffffff;
-            border-bottom: 1px solid #eaeef2;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
             width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
 
         .header-container {
@@ -97,6 +192,11 @@
             height: 32px;
             width: auto;
             object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-img:hover {
+            transform: scale(1.05);
         }
 
         .nav-menu {
@@ -112,8 +212,25 @@
             color: #4a5568;
             font-weight: 500;
             font-size: 0.9rem;
-            transition: color 0.2s ease;
+            transition: all 0.3s ease;
             letter-spacing: 0.3px;
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #dc2626, #ef4444);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
         }
 
         .nav-menu a:hover,
@@ -131,6 +248,7 @@
             border: none;
             cursor: pointer;
             padding: 0;
+            z-index: 1001;
         }
 
         .hamburger-btn span {
@@ -141,157 +259,276 @@
             transition: all 0.3s ease;
         }
 
-        /* HERO */
+        /* HERO CON EFECTO PARALLAX Y BRILLO BLANCO */
         .catalogo-hero {
-            background: linear-gradient(135deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.6) 100%),
+            background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 100%),
                         url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            padding: 6rem 2rem;
+            padding: 8rem 2rem;
             text-align: center;
             position: relative;
+            overflow: hidden;
+        }
+
+        /* Efecto de brillo blanco que barre el hero */
+        .catalogo-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+            animation: rotateIn 20s linear infinite;
+            pointer-events: none;
+        }
+
+        /* Línea de brillo que cruza el hero */
+        .catalogo-hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.4), 
+                rgba(255, 255, 255, 0.6),
+                rgba(255, 255, 255, 0.4),
+                transparent
+            );
+            animation: heroShine 8s ease-in-out infinite;
+            pointer-events: none;
+            transform: skewX(-20deg);
+        }
+
+        /* Brillo pulsante en el fondo del hero */
+        .hero-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: glowPulseWhite 3s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes glowPulseWhite {
+            0%, 100% {
+                opacity: 0.3;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% {
+                opacity: 0.8;
+                transform: translate(-50%, -50%) scale(1.1);
+            }
         }
 
         .catalogo-hero h1 {
-            font-size: 3rem;
-            font-weight: 700;
+            font-size: 4rem;
+            font-weight: 800;
             color: #ffffff;
             margin-bottom: 1rem;
-            letter-spacing: -0.5px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            letter-spacing: -1px;
             animation: fadeInUp 0.8s ease-out;
+            position: relative;
+            z-index: 2;
+            background: linear-gradient(135deg, #ffffff, #f0f0f0);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .catalogo-hero p {
-            font-size: 1.1rem;
-            color: rgba(255,255,255,0.9);
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.95);
             max-width: 600px;
             margin: 0 auto;
-            text-shadow: 0 1px 5px rgba(0,0,0,0.2);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
             animation: fadeInUp 1s ease-out 0.2s forwards;
             opacity: 0;
             animation-fill-mode: forwards;
+            position: relative;
+            z-index: 2;
         }
 
-        /* GRID */
+        /* GRID CON EFECTOS MODERNOS */
         .catalogos-grid {
             max-width: 1280px;
             margin: 0 auto;
             padding: 4rem 2rem;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 2.5rem;
         }
 
         .catalogo-item {
-            background: #ffffff;
-            border: 1px solid #eaeef2;
-            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 24px;
             overflow: hidden;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .catalogo-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+            pointer-events: none;
+        }
+
+        .catalogo-item:hover::before {
+            left: 100%;
         }
 
         .catalogo-item:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
-            border-color: #e2e8f0;
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 30px 40px -12px rgba(0,0,0,0.2);
+            border-color: rgba(220, 38, 38, 0.3);
+            animation: glowPulse 2s infinite;
         }
 
         .catalogo-imagen {
             position: relative;
-            height: 220px;
+            height: 240px;
             overflow: hidden;
-            background: #f1f5f9;
+            background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
         }
 
         .catalogo-imagen img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.4s ease;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .catalogo-item:hover .catalogo-imagen img {
-            transform: scale(1.05);
+            transform: scale(1.1);
         }
 
         .categoria-badge {
             position: absolute;
-            top: 12px;
-            right: 12px;
-            background: rgba(0,0,0,0.75);
-            backdrop-filter: blur(4px);
+            top: 16px;
+            right: 16px;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(8px);
             color: white;
-            padding: 5px 14px;
-            border-radius: 30px;
-            font-size: 0.7rem;
-            font-weight: 600;
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 700;
             letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+
+        .catalogo-item:hover .categoria-badge {
+            background: #dc2626;
+            transform: scale(1.05);
         }
 
         .catalogo-info {
             padding: 1.75rem;
+            position: relative;
+            z-index: 2;
         }
 
         .catalogo-info h3 {
-            font-size: 1.2rem;
-            font-weight: 700;
+            font-size: 1.3rem;
+            font-weight: 800;
             color: #1a1a1a;
             margin-bottom: 0.6rem;
+            transition: color 0.3s ease;
+        }
+
+        .catalogo-item:hover .catalogo-info h3 {
+            color: #dc2626;
         }
 
         .catalogo-info p {
             color: #6b7280;
             font-size: 0.9rem;
             margin-bottom: 1.5rem;
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
         .catalogo-botones {
             display: flex;
-            gap: 0.85rem;
+            gap: 1rem;
         }
 
         .btn-ver, .btn-descargar {
             flex: 1;
-            padding: 0.7rem 0.75rem;
+            padding: 0.8rem 0.75rem;
             border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.8rem;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 0.85rem;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
             font-family: inherit;
+            position: relative;
+            overflow: hidden;
         }
 
         .btn-ver {
-            background: #1a1a1a;
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
             color: white;
         }
 
+        .btn-ver::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-ver:hover::before {
+            left: 100%;
+        }
+
         .btn-ver:hover {
-            background: #333333;
-            transform: scale(1.02);
+            background: linear-gradient(135deg, #dc2626, #ef4444);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(220, 38, 38, 0.4);
         }
 
         .btn-descargar {
             background: transparent;
             color: #1a1a1a;
-            border: 1px solid #e2e8f0;
+            border: 2px solid #e2e8f0;
         }
 
         .btn-descargar:hover {
             border-color: #dc2626;
             color: #dc2626;
-            background: #fef2f2;
+            background: rgba(220, 38, 38, 0.05);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        /* MODAL PDF */
+        /* MODAL CON EFECTO MODERNO */
         .pdf-modal {
             display: none;
             position: fixed;
@@ -300,8 +537,9 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.92);
-            animation: fadeIn 0.2s ease;
+            background-color: rgba(0,0,0,0.95);
+            backdrop-filter: blur(20px);
+            animation: fadeIn 0.3s ease;
         }
 
         .pdf-modal-content {
@@ -310,45 +548,60 @@
             max-width: 1100px;
             margin: 3% auto;
             background: #ffffff;
-            border-radius: 24px;
+            border-radius: 32px;
             height: 90%;
             display: flex;
             flex-direction: column;
             overflow: hidden;
+            animation: scaleIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 50px 80px -20px rgba(0,0,0,0.5);
         }
 
         .pdf-modal-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 1.5rem;
+            padding: 1.2rem 1.8rem;
             border-bottom: 1px solid #eaeef2;
+            background: linear-gradient(135deg, #fff, #f8fafc);
         }
 
         .pdf-modal-header h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #1a1a1a;
+            font-size: 1.2rem;
+            font-weight: 700;
             margin: 0;
+            background: linear-gradient(135deg, #1a1a1a, #dc2626);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .close-pdf {
             background: none;
             border: none;
-            font-size: 28px;
+            font-size: 32px;
             cursor: pointer;
             color: #6b7280;
-            transition: color 0.2s;
+            transition: all 0.3s ease;
             line-height: 1;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .close-pdf:hover {
             color: #dc2626;
+            background: rgba(220, 38, 38, 0.1);
+            transform: rotate(90deg);
         }
 
         .pdf-iframe-container {
             flex: 1;
             padding: 0;
+            background: #f1f5f9;
         }
 
         .pdf-iframe-container iframe {
@@ -361,18 +614,19 @@
             padding: 1rem;
             text-align: center;
             border-top: 1px solid #eaeef2;
+            background: #f8fafc;
         }
 
         .btn-descargar-modal {
-            background: #1a1a1a;
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
             color: white;
             border: none;
-            padding: 0.7rem 1.8rem;
-            border-radius: 50px;
+            padding: 0.8rem 2rem;
+            border-radius: 60px;
             cursor: pointer;
-            font-weight: 600;
-            font-size: 0.85rem;
-            transition: all 0.2s;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
             gap: 10px;
@@ -380,21 +634,36 @@
         }
 
         .btn-descargar-modal:hover {
-            background: #dc2626;
-            transform: scale(1.02);
+            background: linear-gradient(135deg, #dc2626, #ef4444);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(220, 38, 38, 0.3);
         }
 
-        /* FOOTER */
+        /* FOOTER MODERNO */
         footer {
-            background: #0a0a0a;
+            background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
             border-top: none;
             padding: 4rem 2rem 2rem;
             margin-top: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #dc2626, #ef4444, #dc2626);
         }
 
         .footer-container {
             max-width: 1280px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
 
         .footer-grid {
@@ -432,19 +701,21 @@
         .social-links a {
             color: #9ca3af;
             background: #1f2937;
-            width: 36px;
-            height: 36px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.2s;
+            transition: all 0.3s ease;
             text-decoration: none;
+            font-size: 1.2rem;
         }
 
         .social-links a:hover {
             background: #dc2626;
             color: white;
+            transform: translateY(-3px) scale(1.1);
         }
 
         .footer-section ul {
@@ -459,11 +730,13 @@
             color: #9ca3af;
             text-decoration: none;
             font-size: 0.85rem;
-            transition: color 0.2s;
+            transition: all 0.3s ease;
         }
 
         .footer-section ul li a:hover {
             color: #dc2626;
+            transform: translateX(5px);
+            display: inline-block;
         }
 
         .footer-divider {
@@ -492,12 +765,13 @@
                 left: -100%;
                 width: 100%;
                 height: calc(100vh - 65px);
-                background: white;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(10px);
                 flex-direction: column;
                 align-items: center;
-                justify-content: flex-start;
+                justify-content: center;
                 padding: 2.5rem;
-                gap: 1.8rem;
+                gap: 2rem;
                 transition: left 0.3s ease;
                 box-shadow: 0 4px 12px rgba(0,0,0,0.05);
                 z-index: 999;
@@ -508,16 +782,16 @@
             }
 
             .catalogo-hero {
-                padding: 3.5rem 1rem;
+                padding: 4rem 1rem;
                 background-attachment: scroll;
             }
 
             .catalogo-hero h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
 
             .catalogo-hero p {
-                font-size: 0.95rem;
+                font-size: 1rem;
             }
 
             .catalogos-grid {
@@ -548,11 +822,11 @@
 
         @media (max-width: 480px) {
             .catalogo-hero {
-                padding: 2.5rem 1rem;
+                padding: 3rem 1rem;
             }
 
             .catalogo-hero h1 {
-                font-size: 1.6rem;
+                font-size: 1.8rem;
             }
 
             .catalogos-grid {
@@ -560,7 +834,7 @@
             }
 
             .catalogo-imagen {
-                height: 180px;
+                height: 200px;
             }
 
             .catalogo-info {
@@ -568,15 +842,18 @@
             }
 
             .catalogo-info h3 {
-                font-size: 1rem;
+                font-size: 1.1rem;
             }
         }
     </style>
 </head>
 <body>
 
+    <!-- Partículas flotantes -->
+    <div class="particles" id="particles"></div>
+
     <!-- HEADER -->
-    <header>
+    <header id="header">
         <div class="header-container">
             <img src="Ferrofasil.png" alt="FERROFASIL" class="logo-img">
             
@@ -589,16 +866,17 @@
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="nosotros.html">Nosotros</a></li>
-                <li><a href="catalogo.html">Catálogo</a></li>
+                <li><a href="catalogo.html" class="active">Catálogo</a></li>
                 <li><a href="contacto.html">Contacto</a></li>
             </ul>
         </div>
     </header>
 
-    <!-- HERO -->
+    <!-- HERO CON BRILLO BLANCO -->
     <section class="catalogo-hero">
-        <div>
-            <h1>NUESTROS CATÁLOGOS</h1>
+        <div class="hero-glow"></div>
+        <div data-aos="fade-up">
+            <h1>CATÁLOGOS 2026</h1>
             <p>Explora nuestras colecciones | Tableros, herrajes y soluciones para tu hogar</p>
         </div>
     </section>
@@ -606,7 +884,7 @@
     <!-- GRID DE CATÁLOGOS -->
     <div class="catalogos-grid">
         <!-- Saviola -->
-        <div class="catalogo-item">
+        <div class="catalogo-item" data-aos="fade-up" data-aos-delay="100">
             <div class="catalogo-imagen">
                 <img src="saviola.png" alt="Saviola" onerror="this.src='https://placehold.co/400x300/f8fafc/6b7280?text=Saviola'">
                 <span class="categoria-badge">Saviola</span>
@@ -618,7 +896,7 @@
                     <button class="btn-ver" data-pdf="pdfs/saviola-2026.pdf" data-titulo="Saviola - Tableros Ecológicos" data-target="modal">
                         <i class="fas fa-eye"></i> Ver PDF
                     </button>
-                    <button class="btn-descargar" data-pdf="pdfs/saviola-2026.pdf">
+                    <button class="btn-descargar" data-pdf="pdfs/saviola-2026.pdf" data-nombre="saviola-2026.pdf">
                         <i class="fas fa-download"></i> Descargar PDF
                     </button>
                 </div>
@@ -626,7 +904,7 @@
         </div>
 
         <!-- Tecnomat -->
-        <div class="catalogo-item">
+        <div class="catalogo-item" data-aos="fade-up" data-aos-delay="200">
             <div class="catalogo-imagen">
                 <img src="tecno.png" alt="Tecnomat" onerror="this.src='https://placehold.co/400x300/f8fafc/6b7280?text=Tecnomat'">
                 <span class="categoria-badge">Tecnomat</span>
@@ -638,15 +916,15 @@
                     <button class="btn-ver" data-pdf="pdfs/tecnomat-2026.pdf" data-titulo="Tecnomat - Herrajes y Accesorios" data-target="modal">
                         <i class="fas fa-eye"></i> Ver PDF
                     </button>
-                    <button class="btn-descargar" data-pdf="pdfs/tecnomat-2026.pdf">
+                    <button class="btn-descargar" data-pdf="pdfs/tecnomat-2026.pdf" data-nombre="tecnomat-2026.pdf">
                         <i class="fas fa-download"></i> Descargar PDF
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- FFG (este se abre en about:blank / nueva pestaña) -->
-        <div class="catalogo-item">
+        <!-- FFG - CHAPILLAS.pdf en la raíz -->
+        <div class="catalogo-item" data-aos="fade-up" data-aos-delay="300">
             <div class="catalogo-imagen">
                 <img src="FFG (1).png" alt="FFG" onerror="this.src='https://placehold.co/400x300/f8fafc/6b7280?text=FFG'">
                 <span class="categoria-badge">FFG</span>
@@ -655,11 +933,11 @@
                 <h3>FFG</h3>
                 <p>Accesorios organizadores para cocinas y closets</p>
                 <div class="catalogo-botones">
-                    <!-- MISMA CLASE btn-ver, pero con data-target="blank" -->
                     <button class="btn-ver" data-pdf="ffg.html" data-titulo="FFG - Accesorios Organizadores" data-target="blank">
                         <i class="fas fa-eye"></i> Ver PDF
                     </button>
-                    <button class="btn-descargar" data-pdf="pdfs/ffg-2026.pdf">
+                    <!-- CHAPILLAS.pdf está en la raíz - Abre en about:blank para descargar -->
+                    <button class="btn-descargar" data-pdf="CHAPILLAS.pdf" data-nombre="CHAPILLAS.pdf" data-target="blank">
                         <i class="fas fa-download"></i> Descargar PDF
                     </button>
                 </div>
@@ -667,7 +945,7 @@
         </div>
 
         <!-- Pertech -->
-        <div class="catalogo-item">
+        <div class="catalogo-item" data-aos="fade-up" data-aos-delay="400">
             <div class="catalogo-imagen">
                 <img src="PERTECH (1).png" alt="Pertech" onerror="this.src='https://placehold.co/400x300/f8fafc/6b7280?text=Pertech'">
                 <span class="categoria-badge">Pertech</span>
@@ -679,7 +957,7 @@
                     <button class="btn-ver" data-pdf="pdfs/pertech-2026.pdf" data-titulo="Pertech - Herrajes Profesionales" data-target="modal">
                         <i class="fas fa-eye"></i> Ver PDF
                     </button>
-                    <button class="btn-descargar" data-pdf="pdfs/pertech-2026.pdf">
+                    <button class="btn-descargar" data-pdf="pdfs/pertech-2026.pdf" data-nombre="pertech-2026.pdf">
                         <i class="fas fa-download"></i> Descargar PDF
                     </button>
                 </div>
@@ -738,7 +1016,45 @@
         </div>
     </footer>
 
+    <!-- AOS Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
     <script>
+        // Inicializar AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+
+        // Crear partículas flotantes
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                const size = Math.random() * 5 + 2;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 4) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+        createParticles();
+
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
         // Menú hamburguesa
         const hamburgerBtn = document.getElementById('hamburgerBtn');
         const navMenu = document.getElementById('navMenu');
@@ -781,11 +1097,80 @@
             document.body.style.overflow = '';
         }
 
+        // Función para descargar PDF en about:blank
+        function descargarPDF(pdfUrl, nombreArchivo = null) {
+            // Abrir en una nueva pestaña (about:blank) para descargar
+            const newWindow = window.open('about:blank', '_blank');
+            if (newWindow) {
+                newWindow.document.write(`
+                    <!DOCTYPE html>
+                    <html>
+                    <head>
+                        <title>Descargando ${nombreArchivo || 'PDF'}...</title>
+                        <style>
+                            body {
+                                font-family: Arial, sans-serif;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                height: 100vh;
+                                margin: 0;
+                                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                                color: white;
+                            }
+                            .container {
+                                text-align: center;
+                            }
+                            .spinner {
+                                border: 4px solid rgba(255,255,255,0.3);
+                                border-radius: 50%;
+                                border-top: 4px solid white;
+                                width: 40px;
+                                height: 40px;
+                                animation: spin 1s linear infinite;
+                                margin: 20px auto;
+                            }
+                            @keyframes spin {
+                                0% { transform: rotate(0deg); }
+                                100% { transform: rotate(360deg); }
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <div class="container">
+                            <h2>Descargando PDF...</h2>
+                            <div class="spinner"></div>
+                            <p>${nombreArchivo || 'Archivo'}</p>
+                        </div>
+                        <script>
+                            window.location.href = '${pdfUrl}';
+                            setTimeout(() => {
+                                window.close();
+                            }, 2000);
+                        <\/script>
+                    </body>
+                    </html>
+                `);
+            } else {
+                // Fallback: descarga directa
+                const enlace = document.createElement('a');
+                enlace.href = pdfUrl;
+                if (nombreArchivo) {
+                    enlace.download = nombreArchivo;
+                }
+                document.body.appendChild(enlace);
+                enlace.click();
+                document.body.removeChild(enlace);
+            }
+        }
+
         // Evento para descargar desde el modal
         if (descargarPDFModal) {
             descargarPDFModal.onclick = function() {
                 if (currentPdfUrl) {
-                    window.open(currentPdfUrl, '_blank');
+                    const nombreArchivo = currentPdfUrl.split('/').pop();
+                    descargarPDF(currentPdfUrl, nombreArchivo);
+                    cerrarPDF();
                 }
             }
         }
@@ -808,7 +1193,7 @@
             }
         });
 
-        // Manejar todos los botones "Ver PDF" con la MISMA clase
+        // Manejar todos los botones "Ver PDF"
         document.querySelectorAll('.btn-ver').forEach(btn => {
             btn.addEventListener('click', () => {
                 const url = btn.getAttribute('data-pdf');
@@ -816,10 +1201,8 @@
                 const target = btn.getAttribute('data-target');
                 
                 if (target === 'blank') {
-                    // Abrir en nueva pestaña (about:blank no es necesario, se abre directamente)
                     window.open(url, '_blank');
                 } else {
-                    // Abrir en modal
                     if (url) {
                         abrirPDF(url, titulo);
                     }
@@ -831,8 +1214,24 @@
         document.querySelectorAll('.btn-descargar').forEach(btn => {
             btn.addEventListener('click', () => {
                 const pdfUrl = btn.getAttribute('data-pdf');
+                const nombreArchivo = btn.getAttribute('data-nombre');
+                const target = btn.getAttribute('data-target');
+                
                 if (pdfUrl) {
-                    window.open(pdfUrl, '_blank');
+                    if (target === 'blank') {
+                        // Abrir en about:blank para descargar
+                        descargarPDF(pdfUrl, nombreArchivo);
+                    } else {
+                        // Descarga directa para otros PDFs
+                        const enlace = document.createElement('a');
+                        enlace.href = pdfUrl;
+                        if (nombreArchivo) {
+                            enlace.download = nombreArchivo;
+                        }
+                        document.body.appendChild(enlace);
+                        enlace.click();
+                        document.body.removeChild(enlace);
+                    }
                 }
             });
         });
