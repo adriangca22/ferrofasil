@@ -330,7 +330,7 @@
 
         .info-content {
             flex: 1;
-            min-width: 0; /* Previene desbordamiento en flex */
+            min-width: 0;
         }
 
         .info-content h3 {
@@ -602,7 +602,7 @@
             transform: translateX(3px) rotate(10deg);
         }
 
-        /* MAPA */
+        /* MAPA - SECCIÓN INDEPENDIENTE */
         .map-section {
             padding: 0 1rem 3rem 1rem;
             max-width: 1400px;
@@ -648,14 +648,14 @@
             border: none;
         }
 
-        /* BOTÓN FLOTANTE WHATSAPP - CORREGIDO */
+        /* BOTÓN FLOTANTE WHATSAPP */
         .whatsapp-float {
             position: fixed;
             bottom: 20px;
             right: 20px;
             z-index: 999;
             animation: float 3s ease-in-out infinite;
-            max-width: calc(100% - 40px); /* Evita que se salga del viewport */
+            max-width: calc(100% - 40px);
         }
 
         .whatsapp-float a {
@@ -809,7 +809,7 @@
             word-wrap: break-word;
         }
 
-        /* RESPONSIVE - MEJORAS */
+        /* RESPONSIVE */
         @media (min-width: 1025px) {
             .contact-main {
                 grid-template-columns: 1fr 1.2fr;
@@ -993,7 +993,7 @@
             }
             
             .whatsapp-tooltip {
-                display: none; /* Ocultar tooltip en móviles muy pequeños */
+                display: none;
             }
         }
 
@@ -1025,18 +1025,15 @@
         <div class="header-container">
             <img src="Ferrofasil.png" alt="INICIOPÍA Logo" class="logo-img">
             
-            <!-- Botón Hamburguesa -->
             <button class="hamburger-btn" id="hamburgerBtn" aria-label="Menú">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
             
-            <!-- Menú de Navegación -->
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="nosotros.html">Nosotros</a></li>
-                
                 <li><a href="catalogo.html">Catálogo</a></li>
                 <li><a href="contacto.html" style="color: #dc2626;">Contacto</a></li>
             </ul>
@@ -1086,8 +1083,7 @@
                     </div>
                     <div class="info-content">
                         <h3>Email</h3>
-                        <p><a href="mailto:info@iniciopia.com">ventasff2015@gmail.com</a><br>
-                       
+                        <p><a href="mailto:info@iniciopia.com">ventasff2015@gmail.com</a></p>
                     </div>
                 </div>
 
@@ -1118,68 +1114,70 @@
                         <i class="fab fa-whatsapp"></i>
                         <span>WhatsApp</span>
                     </a>
-                 
                 </div>
             </div>
         </div>
 
-      <div class="contact-form-container">
-    <h2>Envíanos un Mensaje</h2>
-    <form class="contact-form" id="contactForm" action="https://formspree.io/f/xzdyprvw" method="POST">
-        
-        <div class="form-row">
-            <div class="form-group">
-                <label for="nombre"><i class="fas fa-user"></i> Nombre *</label>
-                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required>
-            </div>
-            <div class="form-group">
-                <label for="apellido"><i class="fas fa-user"></i> Apellido *</label>
-                <input type="text" id="apellido" name="apellido" placeholder="Tu apellido" required>
-            </div>
+        <!-- FORMULARIO DE CONTACTO -->
+        <div class="contact-form-container">
+            <h2>Envíanos un Mensaje</h2>
+            <form class="contact-form" id="contactForm" action="https://formspree.io/f/xzdyprvw" method="POST">
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nombre"><i class="fas fa-user"></i> Nombre *</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="apellido"><i class="fas fa-user"></i> Apellido *</label>
+                        <input type="text" id="apellido" name="apellido" placeholder="Tu apellido" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email"><i class="fas fa-envelope"></i> Email *</label>
+                        <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono"><i class="fas fa-phone"></i> Teléfono *</label>
+                        <input type="tel" id="telefono" name="telefono" placeholder="+58 414 1234567" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="asunto"><i class="fas fa-tag"></i> Asunto *</label>
+                    <select id="asunto" name="asunto" required>
+                        <option value="" disabled selected>Selecciona una opción</option>
+                        <option value="consulta">Consulta General</option>
+                        <option value="proyecto">Proyecto Específico</option>
+                        <option value="cotizacion">Solicitud de Cotización</option>
+                        <option value="soporte">Soporte Técnico</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="mensaje"><i class="fas fa-edit"></i> Mensaje *</label>
+                    <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos sobre tu proyecto, necesidades o consulta..." required></textarea>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="terminos" name="terminos" required>
+                    <label for="terminos">Acepto los <a href="#" style="color: #dc2626; text-decoration: none;">términos y condiciones</a> y la política de privacidad *</label>
+                </div>
+
+                <input type="text" name="_gotcha" style="display:none">
+
+                <button type="submit" class="submit-btn">
+                    <span>ENVIAR MENSAJE</span>
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
         </div>
+    </section>
 
-        <div class="form-row">
-            <div class="form-group">
-                <label for="email"><i class="fas fa-envelope"></i> Email *</label>
-                <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" required>
-            </div>
-            <div class="form-group">
-                <label for="telefono"><i class="fas fa-phone"></i> Teléfono *</label>
-                <input type="tel" id="telefono" name="telefono" placeholder="+58 414 1234567" required>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="asunto"><i class="fas fa-tag"></i> Asunto *</label>
-            <select id="asunto" name="asunto" required>
-                <option value="" disabled selected>Selecciona una opción</option>
-                <option value="consulta">Consulta General</option>
-                <option value="proyecto">Proyecto Específico</option>
-                <option value="cotizacion">Solicitud de Cotización</option>
-                <option value="soporte">Soporte Técnico</option>
-                <option value="otro">Otro</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="mensaje"><i class="fas fa-edit"></i> Mensaje *</label>
-            <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos sobre tu proyecto, necesidades o consulta..." required></textarea>
-        </div>
-
-        <div class="form-group checkbox-group">
-            <input type="checkbox" id="terminos" name="terminos" required>
-            <label for="terminos">Acepto los <a href="#" style="color: #dc2626; text-decoration: none;">términos y condiciones</a> y la política de privacidad *</label>
-        </div>
-
-        <input type="text" name="_gotcha" style="display:none">
-
-        <button type="submit" class="submit-btn">
-            <span>ENVIAR MENSAJE</span>
-            <i class="fas fa-paper-plane"></i>
-        </button>
-    </form>
-</div>
-<!-- SECCIÓN DE MAPA -->
+    <!-- SECCIÓN DE MAPA - INDEPENDIENTE (DESPUÉS DEL CONTACTO PRINCIPAL) -->
     <section class="map-section">
         <div class="map-container">
             <h2>ENCUÉNTRANOS</h2>
@@ -1198,7 +1196,7 @@
     <footer>
         <div class="footer-container">
             <div class="footer-section">
-                <h3>INICIOPÍA</h3>
+                <h3>Ferrofasil</h3>
                 <p>Tu Decorative Hardware Store en Caracas. Distribución exclusiva de las marcas que definen el diseño interior actual.</p>
             </div>
 
@@ -1225,13 +1223,12 @@
         </div>
 
         <div class="footer-bottom">
-            <p>&copy; 2026 INICIOPÍA Hardware. Todos los derechos reservados.</p>
+            <p>&copy; 2026 ferrofasil. Todos los derechos reservados.</p>
         </div>
     </footer>
 
     <!-- BOTÓN FLOTANTE WHATSAPP -->
- 
-
+   
     <script>
         // FUNCIONALIDAD DEL MENÚ HAMBURGUESA
         document.addEventListener('DOMContentLoaded', function() {
@@ -1239,17 +1236,13 @@
             const navMenu = document.getElementById('navMenu');
             const menuLinks = navMenu.querySelectorAll('a');
             
-            // Abrir/cerrar menú al hacer clic en el botón
             hamburgerBtn.addEventListener('click', function() {
                 this.classList.toggle('active');
                 navMenu.classList.toggle('active');
-                
-                // Cambiar aria-expanded para accesibilidad
                 const expanded = this.classList.contains('active');
                 this.setAttribute('aria-expanded', expanded);
             });
             
-            // Cerrar menú al hacer clic en un enlace
             menuLinks.forEach(link => {
                 link.addEventListener('click', function() {
                     hamburgerBtn.classList.remove('active');
@@ -1258,10 +1251,8 @@
                 });
             });
             
-            // Cerrar menú al hacer clic fuera (opcional)
             document.addEventListener('click', function(event) {
                 const isClickInside = hamburgerBtn.contains(event.target) || navMenu.contains(event.target);
-                
                 if (!isClickInside && navMenu.classList.contains('active')) {
                     hamburgerBtn.classList.remove('active');
                     navMenu.classList.remove('active');
@@ -1269,13 +1260,12 @@
                 }
             });
 
-            // FORMULARIO DE CONTACTO
+            // FORMULARIO DE CONTACTO CON MENSAJE DE ÉXITO
             const contactForm = document.getElementById('contactForm');
             if (contactForm) {
                 contactForm.addEventListener('submit', function(e) {
                     e.preventDefault();
 
-                    // Validación básica
                     const nombre = document.getElementById('nombre').value;
                     const apellido = document.getElementById('apellido').value;
                     const email = document.getElementById('email').value;
@@ -1285,31 +1275,32 @@
                     const terminos = document.getElementById('terminos').checked;
 
                     if (!nombre || !apellido || !email || !telefono || !asunto || !mensaje || !terminos) {
-                        alert('Por favor, completa todos los campos requeridos.');
+                        const errorMsg = document.createElement('div');
+                        errorMsg.innerHTML = '<i class="fas fa-exclamation-circle"></i> Por favor, completa todos los campos requeridos.';
+                        errorMsg.style.cssText = 'position:fixed;top:20px;right:20px;background:#ef4444;color:white;padding:12px 20px;border-radius:8px;z-index:9999;font-size:14px;display:flex;align-items:center;gap:10px;box-shadow:0 3px 10px rgba(0,0,0,0.2);';
+                        document.body.appendChild(errorMsg);
+                        setTimeout(() => errorMsg.remove(), 3000);
                         return;
                     }
 
-                    // Simulación de envío
                     const submitBtn = contactForm.querySelector('.submit-btn');
                     const originalText = submitBtn.innerHTML;
                     
                     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ENVIANDO...';
                     submitBtn.disabled = true;
 
+                    // Simular envío (puedes reemplazar con fetch real)
                     setTimeout(() => {
-                        submitBtn.innerHTML = '<i class="fas fa-check"></i> ¡ENVIADO!';
-                        submitBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+                        const successMsg = document.createElement('div');
+                        successMsg.innerHTML = '<i class="fas fa-check-circle"></i> ¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.';
+                        successMsg.style.cssText = 'position:fixed;top:20px;right:20px;background:#10b981;color:white;padding:12px 20px;border-radius:8px;z-index:9999;font-size:14px;display:flex;align-items:center;gap:10px;box-shadow:0 3px 10px rgba(0,0,0,0.2);';
+                        document.body.appendChild(successMsg);
                         
-                        setTimeout(() => {
-                            submitBtn.innerHTML = originalText;
-                            submitBtn.style.background = 'linear-gradient(135deg, #dc2626, #b91c1c)';
-                            submitBtn.disabled = false;
-                        }, 3000);
-
-                        // Resetear formulario
+                        setTimeout(() => successMsg.remove(), 4000);
+                        
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
                         contactForm.reset();
-                        
-                        console.log('Formulario enviado:', { nombre, apellido, email, telefono, asunto, mensaje });
                     }, 2000);
                 });
             }

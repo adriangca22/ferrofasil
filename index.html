@@ -1454,6 +1454,13 @@ gap: 1rem;
 margin-top: 1rem;
 }
 
+.hero-btn i {
+  vertical-align: middle;
+  line-height: 1;
+  position: relative;
+  top: -2px;
+  right: 5px;
+}
 .social-links a {
 color: #d1d5db;
 text-decoration: none;
@@ -1518,17 +1525,18 @@ font-size: 0.75rem;
 </header>
 <!-- HERO SECTION -->
 <section id="hero">
-<div class="hero-bg"></div>
-<div class="hero-content">
-<h1>LA VITRINA DE INNOVACIÓN</h1>
-<p>Elevamos el detalle de cada proyecto.</p>
-<p>Tu Decorative Hardware Store en Caracas. Distribución exclusiva de las marcas que definen el diseño interior actual.</p>
-<div class="hero-btn-container">
-<button class="hero-btn" onclick="scrollToContact()">
-<span>CONOCE NUESTRAS MARCAS</span>
-</button>
-</div>
-</div>
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <h1>LA VITRINA DE INNOVACIÓN</h1>
+    <p>Elevamos el detalle de cada proyecto.</p>
+    <p>Tu Decorative Hardware Store en Caracas. Distribución exclusiva de las marcas que definen el diseño interior actual.</p>
+    <div class="hero-btn-container">
+      <button class="hero-btn" onclick="window.location.href='catalogo.html'">
+        <i class="fas fa-store" style="font-size: 15px;"></i>
+        <span>CONOCE NUESTRO CATÁLOGO</span>
+      </button>
+    </div>
+  </div>
 </section>
 
 <!-- BRANDS SECTION -->
@@ -1670,6 +1678,21 @@ font-size: 0.75rem;
 </div>
 </section>
 
+<script>
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  // Crear mensaje flotante
+  const msg = document.createElement('div');
+  msg.innerHTML = '<i class="fas fa-check-circle" style="font-size: 18px; margin-right: 10px;"></i> ¡Mensaje enviado con éxito!';
+  msg.style.cssText = 'position:fixed;top:20px;right:20px;background:#10b981;color:white;padding:12px 20px;border-radius:8px;z-index:9999;font-size:14px;box-shadow:0 3px 10px rgba(0,0,0,0.2);display:flex;align-items:center;';
+  
+  document.body.appendChild(msg);
+  this.reset();
+  
+  setTimeout(() => msg.remove(), 3000);
+});
+</script>
 <!-- FOOTER -->
 <footer>
 <div class="footer-container">
@@ -1787,7 +1810,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // ========================================
-  // FORMULARIO DE CONTACTO
+  // FORMULARIO DE CONTACTO CON CHECK ANIMADO
   // ========================================
   const contactForm = document.getElementById('contactForm');
   if (contactForm) {
@@ -1803,7 +1826,39 @@ document.addEventListener('DOMContentLoaded', function() {
       
       console.log('Formulario enviado:', formData);
       contactForm.reset();
-      alert('¡Mensaje enviado correctamente! Nos pondremos en contacto pronto.');
+      
+      // Mensaje flotante con check animado
+      const msg = document.createElement('div');
+      msg.innerHTML = `
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12" style="stroke-dasharray: 50; stroke-dashoffset: 50; animation: checkDraw 0.5s ease forwards;"></polyline>
+          </svg>
+          <span>¡Mensaje enviado con éxito!</span>
+        </div>
+      `;
+      msg.style.cssText = 'position:fixed;top:20px;right:20px;background:#10b981;color:white;padding:14px 24px;border-radius:12px;z-index:9999;font-size:14px;font-weight:500;box-shadow:0 4px 15px rgba(0,0,0,0.2);display:flex;align-items:center;';
+      
+      document.body.appendChild(msg);
+      
+      // Agregar animación del check si no existe
+      if (!document.querySelector('#checkAnimationStyle')) {
+        const style = document.createElement('style');
+        style.id = 'checkAnimationStyle';
+        style.textContent = `
+          @keyframes checkDraw {
+            0% { stroke-dashoffset: 50; }
+            100% { stroke-dashoffset: 0; }
+          }
+        `;
+        document.head.appendChild(style);
+      }
+      
+      setTimeout(() => {
+        msg.style.opacity = '0';
+        msg.style.transition = 'opacity 0.3s';
+        setTimeout(() => msg.remove(), 300);
+      }, 3000);
     });
   }
 });
