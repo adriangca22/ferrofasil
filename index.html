@@ -65,32 +65,17 @@
       display: none;
     }
 
-        body {
-      font-family: 'Poppins', sans-serif;
-      color: #333;
-      line-height: 1.6;
-      overflow-x: hidden;
-      /* IMAGEN DE FONDO COMPLETA SIN REPETICIÓN */
-      background-image: url('icon.jpeg');
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      position: relative;
-    }
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  line-height: 1.6;
+  overflow-x: hidden;
+  background: #ffffff; /* Fondo blanco sólido */
+  position: relative;
+}
 
-    /* CAPA BLANCA SEMITRANSPARENTE PARA LEGIBILIDAD */
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(255, 255, 255, 0.88);
-      z-index: -1;
-      pointer-events: none;
-    }
+/* Eliminamos el ::before que ya no es necesario */
+/* Se elimina por completo el pseudo-elemento ::before */
 
     /* ========================================
        EFECTO ZOOM LENTO AUTOMÁTICO EN HERO
@@ -304,7 +289,27 @@
       background: rgba(29,43,127,0.1);
       transform: scale(1.05);
     }
-
+/* Ajustes para títulos más grandes */
+  .section-title {
+    font-size: 1.2rem !important; /* Más grande */
+    letter-spacing: 3px;
+  }
+  section h2 {
+    font-size: 2.8rem !important; /* Mucho más grande */
+    margin-bottom: 1.2rem;
+  }
+  .service-card h3 {
+    font-size: 1.6rem !important;
+    margin-bottom: 0.5rem;
+  }
+  @media (max-width: 768px) {
+    section h2 {
+      font-size: 2rem !important;
+    }
+    .service-card h3 {
+      font-size: 1.2rem !important;
+    }
+  }
     /* Menú móvil overlay */
     .mobile-nav-overlay {
       position: fixed;
@@ -382,17 +387,27 @@
     }
 
     /* Hero Section con ZOOM AUTOMÁTICO */
-    .hero {
+ .hero {
       height: 90vh;
       min-height: 600px;
-      background: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920') center/cover;
       display: flex;
       align-items: center;
       position: relative;
       overflow: hidden;
     }
 
-    /* CAPA OSCURA SOBRE LA IMAGEN - Mejora la legibilidad del texto */
+    /* Video de fondo */
+    .hero-video {
+      position: absolute;
+      top: 0px;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Hace que el video cubra todo sin deformarse, recortando si es necesario */
+      z-index: 0;
+    }
+
+    /* Overlay oscuro para que el texto sea legible */
     .hero::before {
       content: '';
       position: absolute;
@@ -400,9 +415,11 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.55);
+      background: rgba(0, 0, 0, 0.274); /* Ajusta opacidad si quieres más o menos oscuro */
       z-index: 1;
     }
+    /* CAPA OSCURA SOBRE LA IMAGEN - Mejora la legibilidad del texto */
+  
 
     .hero::after {
       content: '';
@@ -1085,92 +1102,156 @@
       transform: translateY(-5px);
     }
 
-    /* Contact - Fondo transparente */
-    .contact {
-      padding: 100px 20px;
-      background: transparent;
-      position: relative;
-      z-index: 1;
-    }
+   
+.contact {
+  padding: 100px 20px;
+  position: relative;
+  z-index: 1;
+}
 
-    .contact-container {
-      max-width: 1000px;
-      margin: 0 auto;
-    }
+/* Esto elimina la capa blanca SOLO en la sección de contacto */
+/* SECCIÓN CONTACTO - IMAGEN CON OPACIDAD, SIN CAPA NEGRA */
+/* SECCIÓN CONTACTO - CON DEGRADADO GRIS SOBRE LA IMAGEN */
+.contact {
+  padding: 100px 20px;
+  position: relative;
+  z-index: 1;
+  background-image: url('icon.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
 
-    .contact-card {
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 30px;
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      box-shadow: 0 30px 80px rgba(0,0,0,0.15);
-      transition: transform 0.3s;
-    }
+/* Degradado gris sobre la imagen */
+.contact::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgb(197, 195, 195) 0%, rgba(212, 212, 212, 0.829) 100%);
+  z-index: 0;
+}
 
-    .contact-card:hover {
-      transform: translateY(-10px);
-    }
+.contact-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
 
-    .contact-image {
-      position: relative;
-      overflow: hidden;
-    }
+/* TARJETA BLANCA - Flota sobre el fondo */
+.contact-card {
+  background: rgba(243, 243, 243, 0.96);
+  border-radius: 30px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.2);
+  transition: transform 0.3s;
+  position: relative;
+}
 
-    .contact-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      min-height: 500px;
-      transition: transform 0.5s;
-    }
+.contact-card:hover {
+  transform: translateY(-10px);
+}
 
-    .contact-image:hover img {
-      transform: scale(1.05);
-    }
+.contact-image {
+  position: relative;
+  overflow: hidden;
+}
 
-    .contact-form-wrapper {
-      padding: 50px;
-    }
+.contact-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  min-height: 500px;
+  transition: transform 0.5s;
+}
 
-    .contact-form-wrapper h2 {
-      font-size: 28px;
-      color: var(--primary-blue);
-      margin-bottom: 25px;
-    }
+.contact-image:hover img {
+  transform: scale(1.05);
+}
 
-    .form-group {
-      margin-bottom: 20px;
-    }
+.contact-form-wrapper {
+  padding: 50px;
+}
 
-    .form-group input,
-    .form-group textarea {
-      width: 100%;
-      padding: 12px 18px;
-      border: 2px solid var(--light-gray);
-      border-radius: 10px;
-      font-family: 'Poppins', sans-serif;
-      font-size: 13px;
-      transition: all 0.3s;
-    }
+.contact-form-wrapper h2 {
+  font-size: 28px;
+  color: var(--primary-blue);
+  margin-bottom: 25px;
+}
 
-    .form-group input:focus,
-    .form-group textarea:focus {
-      outline: none;
-      border-color: var(--primary-blue);
-      box-shadow: 0 0 10px rgba(29,43,127,0.2);
-    }
+.form-group {
+  margin-bottom: 20px;
+}
 
-    .form-group textarea {
-      min-height: 100px;
-    }
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 18px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  transition: all 0.3s;
+  background: white;
+}
 
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-    }
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 10px rgba(29,43,127,0.2);
+}
 
+.form-group textarea {
+  min-height: 100px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.submit-btn {
+  background: var(--primary-blue);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 40px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s;
+  width: 100%;
+}
+
+.submit-btn:hover {
+  background: #0f1f5c;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contact-card {
+    grid-template-columns: 1fr;
+  }
+  
+  .contact-image img {
+    min-height: 300px;
+  }
+  
+  .contact-form-wrapper {
+    padding: 30px;
+  }
+}
     /* Footer */
     footer {
       background: linear-gradient(135deg, var(--primary-blue), #151f5c);
@@ -1439,7 +1520,11 @@
     </ul>
   </div>
 
-  <section class="hero" id="home">
+<section class="hero" id="home">
+    <video autoplay muted loop playsinline class="hero-video">
+        <source src="video.mp4" type="video/mp4">
+        Tu navegador no soporta videos HTML5.
+    </video>
     <div class="hero-glow"></div>
     <div class="hero-content">
       <div class="hero-badge">
@@ -1481,8 +1566,8 @@
       <div class="about-content" data-aos="fade-right">
         <div class="section-title">About Us</div>
         <h2>Expert Construction & Consulting Professionals</h2>
-        <p>Full Uniwell is a team of expert General Contractor and Construction Consulting professionals serving the entire state of Florida. Our firm provides comprehensive management, administrative, and supervisory solutions for projects of all scales throughout the region.</p>
-        <p>We specialize in delivering high-quality, high-impact results for private, public, state, and federal government agencies, ensuring excellence and compliance across every Florida municipality.</p>
+        <p>Full Univeil is a team of expert General Contractor and Construction Consulting professionals serving the entire state of Florida. Our firm provides comprehensive management, administrative, and supervisory solutions for projects of all scales throughout the region.</p>
+        <p>We specialize in delivering high-quality, high-impact results for private, public, state, and federal government agencies, ensuring excellence and compliance across every Florida municipality. We operate with Partner builders, working in tandem with architects, engineers, and trusted subcontractors to transform initial concepts into structural reality. Our team is dedicated to community growth and small business success.</p>
        <div class="spec-grid">
   <div class="spec-item">
     <img src="Asset 21.png" alt="Business Development" class="spec-icon-img">
@@ -1524,7 +1609,7 @@
     </div>
     <div class="service-content">
       <h3>General Contracting</h3>
-      <p>Expert end-to-end construction. We handle everything from groundbreaking to final delivery, ensuring top-tier quality and safety.</p>
+      <p>Expert end-to-end construction. We handle everything from groundbreaking to final delivery, ensuring top-tier quality and safety on every site.</p>
     </div>
   </div>
   <div class="service-card">
@@ -1533,16 +1618,16 @@
     </div>
     <div class="service-content">
       <h3>Project & Management</h3>
-      <p>Seamless coordination of budgets, timelines, and subcontractors. We optimize resources to ensure your project stays on track.</p>
+      <p>Seamless coordination of budgets, timelines, and subcontractors. We optimize resources to ensure your project stays on track and under budget.</p>
     </div>
   </div>
   <div class="service-card">
     <div class="service-icon">
-      <img src="Asset 17.png" alt="Consulting & Support" class="service-icon-img">
+      <img src="Asset 17.png" alt="Consulting & Support Services" class="service-icon-img">
     </div>
     <div class="service-content">
-      <h3>Consulting & Support</h3>
-      <p>Strategic pre-construction guidance. We provide the technical expertise needed to navigate complex planning.</p>
+      <h3>Consulting & Support Services</h3>
+      <p>Strategic pre-construction guidance. We navigate complex planning and informed decision-making.</p>
     </div>
   </div>
 </div>
@@ -1554,34 +1639,34 @@
   <section class="recent-projects" id="recent-projects">
     <div class="recent-projects-container">
       <div class="recent-projects-header" data-aos="fade-up">
-        <div class="section-title">Portfolio</div>
+        <div class="section-title"></div>
         <h2>Recent Projects</h2>
-        <p>Advanced Recreational Hardscape and Brick - Discover our latest completed works</p>
+        <p>Advanced Recreational Facility · Hardscape and Brick Paving · Commercial Renovations</p>
       </div>
       <div class="recent-projects-grid">
         <div class="recent-project-card" data-aos="fade-up" data-aos-delay="100">
           <div class="recent-project-image">
-            <img src="Photorealistic Ident.jpeg" alt="Advanced Recreational Hardscape" onerror="this.src='https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600'">
+            <img src="Photorealistic Ident.jpeg" alt="Advanced Recreational Facility Construction" onerror="this.src='https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600'">
           </div>
           <div class="recent-project-info">
-            <h3>Advanced Recreational Hardscape</h3>
-            <p>Complete recreational facility renovation with premium hardscape materials and sustainable design solutions.</p>
+            <h3>Advanced Recreational Facility Construction</h3>
+            <p>From foundational build to professional-grade finishes and modern lighting, we create safe, high-performance spaces.</p>
             <span class="recent-project-tag">Completed 2025</span>
           </div>
         </div>
         <div class="recent-project-card" data-aos="fade-up" data-aos-delay="200">
           <div class="recent-project-image">
-            <img src="images (1).jpeg" alt="Brick and Masonry" onerror="this.src='https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600'">
+            <img src="images (1).jpeg" alt="Hardscape and Brick Paving Installation" onerror="this.src='https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600'">
           </div>
           <div class="recent-project-info">
-            <h3>Brick and Masonry Excellence</h3>
-            <p>Custom brick facade and masonry work for commercial building in downtown Miami.</p>
+            <h3>Hardscape and Brick Paving Installation</h3>
+            <p>We offer a full range of hardscaping services, including paving, edging, and landscaping.</p>
             <span class="recent-project-tag">Completed 2025</span>
           </div>
         </div>
         <div class="recent-project-card" data-aos="fade-up" data-aos-delay="300">
           <div class="recent-project-image">
-            <img src="images (3).jpeg" alt="Commercial Construction" onerror="this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600'">
+            <img src="images (3).jpeg" alt="Commercial Plaza Renovation" onerror="this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600'">
           </div>
           <div class="recent-project-info">
             <h3>Commercial Plaza Renovation</h3>
@@ -1599,7 +1684,7 @@
    <section class="partners-section" id="partners">
     <div class="partners-container">
       <div class="partners-header" data-aos="fade-up">
-        <div class="section-title">Trusted By</div>
+        <div class="section-title"></div>
         <h2>Our Partners</h2>
         <p>Collaborating with industry leaders to deliver excellence in every project</p>
       </div>
@@ -1634,12 +1719,12 @@
 
   <section class="location" id="location">
     <div class="location-container">
-      <h2 data-aos="fade-up">Location and Services Areas</h2>
-      <p data-aos="fade-up">Strategically positioned to serve our local South Florida community throughout the entire region.</p>
+      <h2 data-aos="fade-up">Location and Service Areas</h2>
+      <p data-aos="fade-up">Strategically positioned to serve our local South Florida community, we also provide comprehensive construction solutions throughout the entire Florida region. No matter the location, our team is equipped to bring excellence and precision to your job site.</p>
       <div class="map-container" data-aos="fade-up">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d113608.86306460647!2d-80.299499!3d25.7616798!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9b0a20ec8c111%3A0xff96f271ddad4f65!2sMiami%2C%20FL!5e0!3m2!1sen!2sus!4v1234567890" allowfullscreen="" loading="lazy"></iframe>
       </div>
-      <div class="address" data-aos="fade-up"><i class="fas fa-map-marker-alt"></i><span>18501 Pines Blvd Suite 3006, Pembroke Pines, FL 33029</span></div>
+      <div class="address" data-aos="fade-up"><i class="fas fa-map-marker-alt"></i><span>18501 Pines Blvd Suite 3006, Pembroke Pines, FL 33029, EEUU</span></div>
     </div>
   </section>
 
@@ -1650,24 +1735,24 @@
         <div class="contact-form-wrapper">
           <h2>Start Your Project Today</h2>
           <form id="contactForm">
-            <div class="form-group"><input type="text" placeholder="Full Name" required></div>
+            <div class="form-group"><input type="text" placeholder="First Name" required></div>
             <div class="form-row">
               <div class="form-group"><input type="email" placeholder="Email Address" required></div>
               <div class="form-group"><input type="tel" placeholder="Phone Number"></div>
             </div>
-            <div class="form-group"><textarea placeholder="Tell us about your project..." required></textarea></div>
-            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;"><i class="fas fa-paper-plane"></i> Send Message</button>
+            <div class="form-group"><textarea placeholder="Your Message" required></textarea></div>
+            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;"><i class="fas fa-paper-plane"></i> SEND MESSAGE</button>
           </form>
         </div>
       </div>
     </div>
   </section>
 
-  <footer>
+<footer>
     <div class="footer-container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <h1 style="font-size: 24px;">Full Uniwell LLC</h1>
+          <img src="fur.png" alt="Full Univeil Logo" style="max-width: 180px; height: auto; margin-bottom: 1rem;">
           <span>Best Project Management 2026</span>
           <p>Transforming visions into reality with precision and expertise. Your trusted partner for construction excellence in Florida.</p>
           <div class="social-links">
@@ -1677,11 +1762,11 @@
             <a href="#"><i class="fab fa-linkedin-in"></i></a>
           </div>
         </div>
-        <div class="footer-column"><h3>Useful Links</h3><ul><li><a href="#home">Home</a></li><li><a href="#about">About Us</a></li><li><a href="#recent-projects">Projects</a></li><li><a href="#services">Services</a></li><li><a href="#location">Location</a></li><li><a href="#contact">Contact</a></li></ul></div>
+        <div class="footer-column"><h3>Useful Links</h3><ul><li><a href="#home">Home</a></li><li><a href="#about">About Us</a></li><li><a href="#recent-projects">Projects</a></li><li><a href="#services">Our Services</a></li><li><a href="#location">Location</a></li><li><a href="#contact">Contact</a></li></ul></div>
         <div class="footer-column"><h3>Our Services</h3><ul><li><a href="#">General Contracting</a></li><li><a href="#">Project Management</a></li><li><a href="#">Management Consulting</a></li><li><a href="#">Subcontractor Management</a></li><li><a href="#">Home Inspection</a></li><li><a href="#">Business Development</a></li></ul></div>
-        <div class="footer-column"><h3>Get In Touch</h3><ul class="contact-info"><li><i class="fas fa-map-marker-alt"></i><span>18501 Pines Blvd Suite 3006,<br>Pembroke Pines, FL 33029</span></li><li><i class="fas fa-phone"></i><span>+1 (786) 991-0252</span></li><li><i class="fas fa-envelope"></i><span>fulluniwell@gmail.com</span></li></ul></div>
+        <div class="footer-column"><h3>Get In Touch</h3><ul class="contact-info"><li><i class="fas fa-map-marker-alt"></i><span>18501 Pines Blvd Suite 3006,<br>Pembroke Pines, FL 33029, EEUU</span></li><li><i class="fas fa-phone"></i><span>+1 (786) 691-0212</span></li><li><i class="fas fa-envelope"></i><span>fulluniveil@gmail.com</span></li></ul></div>
       </div>
-      <div class="footer-bottom"><p>&copy; 2026 FULL UNIWELL LLC. All Rights Reserved.</p></div>
+      <div class="footer-bottom"><p>&copy; 2026 FULL UNIVEIL LLC. All Rights Reserved. Design by you_casa</p></div>
     </div>
   </footer>
 
