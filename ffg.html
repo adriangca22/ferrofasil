@@ -27,6 +27,8 @@
             justify-content: space-between;
             border-bottom: 1px solid #2a2a2a;
             flex-shrink: 0;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
         .header h1 {
@@ -40,9 +42,12 @@
             color: #dc2626;
         }
 
-        .btn-cerrar {
-            background: #dc2626;
-            color: white;
+        .btn-group {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn-volver, .btn-descargar {
             border: none;
             padding: 0.5rem 1.2rem;
             border-radius: 50px;
@@ -52,11 +57,27 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            transition: background 0.2s;
+            transition: all 0.2s ease;
         }
 
-        .btn-cerrar:hover {
-            background: #b91c1c;
+        .btn-volver {
+            background: #2d2d2d;
+            color: white;
+        }
+
+        .btn-volver:hover {
+            background: #3d3d3d;
+            transform: translateY(-1px);
+        }
+
+        .btn-descargar {
+            background: #f01313;
+            color: white;
+        }
+
+        .btn-descargar:hover {
+            background: #fd1302;
+            transform: translateY(-1px);
         }
 
         .pdf-container {
@@ -70,20 +91,52 @@
             height: 100%;
             border: none;
         }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 0.8rem 1rem;
+                flex-direction: column;
+                text-align: center;
+            }
+            .btn-group {
+                width: 100%;
+                justify-content: center;
+            }
+            .btn-volver, .btn-descargar {
+                padding: 0.4rem 1rem;
+                font-size: 0.75rem;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="header">
         <h1><i class="fas fa-file-pdf"></i> FFG - Accesorios Organizadores</h1>
-        <button onclick="window.close()" class="btn-cerrar">
-            <i class="fas fa-times"></i> Cerrar ventana
-        </button>
+        <div class="btn-group">
+            <button onclick="window.location.href='catalogo.html'" class="btn-volver">
+                <i class="fas fa-arrow-left"></i> Volver al catálogo
+            </button>
+            <button onclick="descargarPDF()" class="btn-descargar">
+                <i class="fas fa-download"></i> Descargar PDF
+            </button>
+        </div>
     </div>
     <div class="pdf-container">
-        <!-- EL PDF ESTÁ EN LA RAÍZ, NO EN CARPETA pdfs/ -->
-        <iframe src="CHAPILLAS.pdf" title="Catálogo FFG"></iframe>
+        <iframe id="pdfFrame" src="CHAPILLAS.pdf" title="Catálogo FFG"></iframe>
     </div>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <script>
+        function descargarPDF() {
+            // Forzar descarga del PDF
+            const link = document.createElement('a');
+            link.href = 'CHAPILLAS.pdf';
+            link.download = 'FFG_Catalogo.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
 </body>
 </html>

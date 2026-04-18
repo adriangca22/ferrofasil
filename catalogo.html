@@ -6,7 +6,7 @@
     <title>FERROFASIL - Catálogos 2026</title>
     <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- AOS Library para animaciones al scroll -->
+    <!-- AOS Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
@@ -26,7 +26,7 @@
             overflow-x: hidden;
         }
 
-        /* ANIMACIONES MODERNAS 2026 */
+        /* ANIMACIONES */
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-20px); }
@@ -37,11 +37,6 @@
             50% { box-shadow: 0 0 20px rgba(220, 38, 38, 0.6), 0 0 30px rgba(220, 38, 38, 0.4); }
         }
 
-        @keyframes shine {
-            0% { transform: translateX(-100%) rotate(45deg); }
-            100% { transform: translateX(200%) rotate(45deg); }
-        }
-
         @keyframes gradientShift {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
@@ -49,64 +44,41 @@
         }
 
         @keyframes scaleIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
         }
 
         @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
         @keyframes rotateIn {
-            from {
-                opacity: 0;
-                transform: rotate(-10deg) scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: rotate(0deg) scale(1);
-            }
+            from { opacity: 0; transform: rotate(-10deg) scale(0.9); }
+            to { opacity: 1; transform: rotate(0deg) scale(1); }
         }
 
         @keyframes heroShine {
-            0% {
-                opacity: 0;
-                transform: translateX(-100%) translateY(-100%) rotate(45deg);
-            }
-            50% {
-                opacity: 0.6;
-            }
-            100% {
-                opacity: 0;
-                transform: translateX(100%) translateY(100%) rotate(45deg);
-            }
+            0% { opacity: 0; transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            50% { opacity: 0.6; }
+            100% { opacity: 0; transform: translateX(100%) translateY(100%) rotate(45deg); }
         }
 
-        /* Fondo con efecto de partículas moderno */
+        @keyframes glowPulseWhite {
+            0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
         body::before {
             content: '';
             position: fixed;
@@ -124,7 +96,6 @@
             background-size: 200% 200%;
         }
 
-        /* Partículas flotantes */
         .particles {
             position: fixed;
             top: 0;
@@ -145,23 +116,7 @@
 
         @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap');
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* HEADER CON EFECTO GLASS */
+        /* HEADER */
         header {
             position: sticky;
             top: 0;
@@ -259,7 +214,7 @@
             transition: all 0.3s ease;
         }
 
-        /* HERO CON EFECTO PARALLAX Y BRILLO BLANCO */
+        /* HERO */
         .catalogo-hero {
             background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 100%),
                         url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
@@ -272,7 +227,6 @@
             overflow: hidden;
         }
 
-        /* Efecto de brillo blanco que barre el hero */
         .catalogo-hero::before {
             content: '';
             position: absolute;
@@ -285,7 +239,6 @@
             pointer-events: none;
         }
 
-        /* Línea de brillo que cruza el hero */
         .catalogo-hero::after {
             content: '';
             position: absolute;
@@ -293,19 +246,12 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, 
-                transparent, 
-                rgba(255, 255, 255, 0.4), 
-                rgba(255, 255, 255, 0.6),
-                rgba(255, 255, 255, 0.4),
-                transparent
-            );
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), rgba(255,255,255,0.6), rgba(255,255,255,0.4), transparent);
             animation: heroShine 8s ease-in-out infinite;
             pointer-events: none;
             transform: skewX(-20deg);
         }
 
-        /* Brillo pulsante en el fondo del hero */
         .hero-glow {
             position: absolute;
             top: 50%;
@@ -316,17 +262,6 @@
             background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
             animation: glowPulseWhite 3s ease-in-out infinite;
             pointer-events: none;
-        }
-
-        @keyframes glowPulseWhite {
-            0%, 100% {
-                opacity: 0.3;
-                transform: translate(-50%, -50%) scale(1);
-            }
-            50% {
-                opacity: 0.8;
-                transform: translate(-50%, -50%) scale(1.1);
-            }
         }
 
         .catalogo-hero h1 {
@@ -357,7 +292,7 @@
             z-index: 2;
         }
 
-        /* GRID CON EFECTOS MODERNOS */
+        /* GRID */
         .catalogos-grid {
             max-width: 1280px;
             margin: 0 auto;
@@ -375,7 +310,6 @@
             overflow: hidden;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
-            cursor: pointer;
         }
 
         .catalogo-item::before {
@@ -528,7 +462,7 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        /* MODAL CON EFECTO MODERNO */
+        /* MODAL PDF */
         .pdf-modal {
             display: none;
             position: fixed;
@@ -639,7 +573,36 @@
             box-shadow: 0 10px 20px rgba(220, 38, 38, 0.3);
         }
 
-        /* FOOTER MODERNO */
+        /* TOAST */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 10000;
+            font-size: 14px;
+            font-weight: 500;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            animation: slideInUp 0.3s ease;
+        }
+
+        .toast.error {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+        }
+
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateX(-50%) translateY(100px); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+
+        /* FOOTER */
         footer {
             background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
             border-top: none;
@@ -749,16 +712,9 @@
             font-size: 0.75rem;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
-            .header-container {
-                padding: 0.875rem 1.25rem;
-            }
-
-            .hamburger-btn {
-                display: flex;
-            }
-
+            .header-container { padding: 0.875rem 1.25rem; }
+            .hamburger-btn { display: flex; }
             .nav-menu {
                 position: fixed;
                 top: 65px;
@@ -773,96 +729,41 @@
                 padding: 2.5rem;
                 gap: 2rem;
                 transition: left 0.3s ease;
-                box-shadow: 0 4px 12px rgba(0,0,0,0.05);
                 z-index: 999;
             }
-
-            .nav-menu.active {
-                left: 0;
-            }
-
-            .catalogo-hero {
-                padding: 4rem 1rem;
-                background-attachment: scroll;
-            }
-
-            .catalogo-hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .catalogo-hero p {
-                font-size: 1rem;
-            }
-
-            .catalogos-grid {
-                padding: 2rem 1rem;
-                gap: 1.5rem;
-            }
-
-            .catalogo-botones {
-                flex-direction: column;
-            }
-
-            .footer-grid {
-                flex-direction: column;
-                text-align: center;
-                gap: 2rem;
-            }
-
-            .social-links {
-                justify-content: center;
-            }
-
-            .pdf-modal-content {
-                width: 95%;
-                margin: 5% auto;
-                height: 88%;
-            }
+            .nav-menu.active { left: 0; }
+            .catalogo-hero { padding: 4rem 1rem; background-attachment: scroll; }
+            .catalogo-hero h1 { font-size: 2.5rem; }
+            .catalogo-hero p { font-size: 1rem; }
+            .catalogos-grid { padding: 2rem 1rem; gap: 1.5rem; }
+            .catalogo-botones { flex-direction: column; }
+            .footer-grid { flex-direction: column; text-align: center; gap: 2rem; }
+            .social-links { justify-content: center; }
+            .pdf-modal-content { width: 95%; margin: 5% auto; height: 88%; }
         }
 
         @media (max-width: 480px) {
-            .catalogo-hero {
-                padding: 3rem 1rem;
-            }
-
-            .catalogo-hero h1 {
-                font-size: 1.8rem;
-            }
-
-            .catalogos-grid {
-                padding: 1.5rem 1rem;
-            }
-
-            .catalogo-imagen {
-                height: 200px;
-            }
-
-            .catalogo-info {
-                padding: 1.25rem;
-            }
-
-            .catalogo-info h3 {
-                font-size: 1.1rem;
-            }
+            .catalogo-hero { padding: 3rem 1rem; }
+            .catalogo-hero h1 { font-size: 1.8rem; }
+            .catalogos-grid { padding: 1.5rem 1rem; }
+            .catalogo-imagen { height: 200px; }
+            .catalogo-info { padding: 1.25rem; }
+            .catalogo-info h3 { font-size: 1.1rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Partículas flotantes -->
     <div class="particles" id="particles"></div>
 
-    <!-- HEADER -->
     <header id="header">
         <div class="header-container">
             <img src="Ferrofasil.png" alt="FERROFASIL" class="logo-img">
-            
             <button class="hamburger-btn" id="hamburgerBtn" aria-label="Menú">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
-            
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="nosotros.html">Nosotros</a></li>
@@ -872,7 +773,6 @@
         </div>
     </header>
 
-    <!-- HERO CON BRILLO BLANCO -->
     <section class="catalogo-hero">
         <div class="hero-glow"></div>
         <div data-aos="fade-up">
@@ -881,91 +781,88 @@
         </div>
     </section>
 
-  <!-- GRID DE CATÁLOGOS -->
-<div class="catalogos-grid">
-    <!-- Saviola -->
-    <div class="catalogo-item" data-aos="fade-up" data-aos-delay="100">
-        <div class="catalogo-imagen">
-            <img src="saviola.png" alt="Saviola" onerror="this.src='https://placehold.co/400x300/f8fafc/6b7280?text=Saviola'">
-            <span class="categoria-badge">Saviola</span>
+    <div class="catalogos-grid">
+        <!-- Saviola -->
+        <div class="catalogo-item" data-aos="fade-up" data-aos-delay="100">
+            <div class="catalogo-imagen">
+                <img src="saviola.png" alt="Saviola" onerror="this.src='https://placehold.co/400x300/f8fafc/6b7280?text=Saviola'">
+                <span class="categoria-badge">Saviola</span>
+            </div>
+            <div class="catalogo-info">
+                <h3>Saviola</h3>
+                <p>Tableros ecológicos y melamínicos de alta calidad</p>
+                <div class="catalogo-botones">
+                    <button class="btn-ver" data-url="saviola.html" data-titulo="Saviola - Tableros Ecológicos">
+                        <i class="fas fa-eye"></i> Ver PDF
+                    </button>
+                    <button class="btn-descargar" data-url="saviola.pdf" data-nombre="saviola.pdf">
+                        <i class="fas fa-download"></i> Descargar PDF
+                    </button>
+                </div>
+            </div>
         </div>
-        <div class="catalogo-info">
-            <h3>Saviola</h3>
-            <p>Tableros ecológicos y melamínicos de alta calidad</p>
-            <div class="catalogo-botones">
-                <button class="btn-ver" data-pdf="saviola.pdf" data-titulo="Saviola - Tableros Ecológicos" data-target="blank">
-                    <i class="fas fa-eye"></i> Ver PDF
-                </button>
-                <button class="btn-descargar" data-pdf="saviola.pdf" data-nombre="saviola.pdf" data-target="blank">
-                    <i class="fas fa-download"></i> Descargar PDF
-                </button>
+
+        <!-- Tecnomat -->
+        <div class="catalogo-item" data-aos="fade-up" data-aos-delay="200">
+            <div class="catalogo-imagen">
+                <img src="tecno.png" alt="Tecnomat" onerror="this.src='https://placehold.co/400x300/f8fafc/6b7280?text=Tecnomat'">
+                <span class="categoria-badge">Tecnomat</span>
+            </div>
+            <div class="catalogo-info">
+                <h3>Tecnomat</h3>
+                <p>Herrajes y accesorios para muebles y carpintería</p>
+                <div class="catalogo-botones">
+                    <button class="btn-ver" data-url="tecno.html" data-titulo="Tecnomat - Herrajes y Accesorios">
+                        <i class="fas fa-eye"></i> Ver PDF
+                    </button>
+                    <button class="btn-descargar" data-url="tecno.pdf" data-nombre="tecno.pdf">
+                        <i class="fas fa-download"></i> Descargar PDF
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- FFG -->
+        <div class="catalogo-item" data-aos="fade-up" data-aos-delay="300">
+            <div class="catalogo-imagen">
+                <img src="ffg2.png" alt="FFG" onerror="this.src='https://placehold.co/400x300/f8fafc/6b7280?text=FFG'">
+                <span class="categoria-badge">FFG</span>
+            </div>
+            <div class="catalogo-info">
+                <h3>FFG</h3>
+                <p>Accesorios organizadores para cocinas y closets</p>
+                <div class="catalogo-botones">
+                    <button class="btn-ver" data-url="ffg.html" data-titulo="FFG - Accesorios Organizadores">
+                        <i class="fas fa-eye"></i> Ver PDF
+                    </button>
+                    <button class="btn-descargar" data-url="CHAPILLAS.pdf" data-nombre="CHAPILLAS.pdf">
+                        <i class="fas fa-download"></i> Descargar PDF
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pertech -->
+        <div class="catalogo-item" data-aos="fade-up" data-aos-delay="400">
+            <div class="catalogo-imagen">
+                <img src="PERTECH (1).png" alt="Pertech" onerror="this.src='https://placehold.co/400x300/f8fafc/6b7280?text=Pertech'">
+                <span class="categoria-badge">Pertech</span>
+            </div>
+            <div class="catalogo-info">
+                <h3>Pertech</h3>
+                <p>Herrajes profesionales para carpintería y mobiliario</p>
+                <div class="catalogo-botones">
+                    <button class="btn-ver" data-url="pdfs/pertech-2026.pdf" data-titulo="Pertech - Herrajes Profesionales">
+                        <i class="fas fa-eye"></i> Ver PDF
+                    </button>
+                    <button class="btn-descargar" data-url="pdfs/pertech-2026.pdf" data-nombre="pertech-2026.pdf">
+                        <i class="fas fa-download"></i> Descargar PDF
+                    </button>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Tecnomat -->
-    <div class="catalogo-item" data-aos="fade-up" data-aos-delay="200">
-        <div class="catalogo-imagen">
-            <img src="tecno.png" alt="Tecnomat" onerror="this.src='https://placehold.co/400x300/f8fafc/6b7280?text=Tecnomat'">
-            <span class="categoria-badge">Tecnomat</span>
-        </div>
-        <div class="catalogo-info">
-            <h3>Tecnomat</h3>
-            <p>Herrajes y accesorios para muebles y carpintería</p>
-            <div class="catalogo-botones">
-                <button class="btn-ver" data-pdf="tecno.html" data-titulo="Tecnomat - Herrajes y Accesorios" data-target="blank">
-                    <i class="fas fa-eye"></i> Ver PDF
-                </button>
-                <button class="btn-descargar" data-pdf="tecno.html" data-nombre="tecno.pdf" data-target="blank">
-                    <i class="fas fa-download"></i> Descargar PDF
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- FFG - CHAPILLAS.pdf en la raíz -->
-    <div class="catalogo-item" data-aos="fade-up" data-aos-delay="300">
-        <div class="catalogo-imagen">
-            <img src="FFG (1).png" alt="FFG" onerror="this.src='https://placehold.co/400x300/f8fafc/6b7280?text=FFG'">
-            <span class="categoria-badge">FFG</span>
-        </div>
-        <div class="catalogo-info">
-            <h3>FFG</h3>
-            <p>Accesorios organizadores para cocinas y closets</p>
-            <div class="catalogo-botones">
-                <button class="btn-ver" data-pdf="ffg.html" data-titulo="FFG - Accesorios Organizadores" data-target="blank">
-                    <i class="fas fa-eye"></i> Ver PDF
-                </button>
-                <button class="btn-descargar" data-pdf="CHAPILLAS.pdf" data-nombre="CHAPILLAS.pdf" data-target="blank">
-                    <i class="fas fa-download"></i> Descargar PDF
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Pertech -->
-    <div class="catalogo-item" data-aos="fade-up" data-aos-delay="400">
-        <div class="catalogo-imagen">
-            <img src="PERTECH (1).png" alt="Pertech" onerror="this.src='https://placehold.co/400x300/f8fafc/6b7280?text=Pertech'">
-            <span class="categoria-badge">Pertech</span>
-        </div>
-        <div class="catalogo-info">
-            <h3>Pertech</h3>
-            <p>Herrajes profesionales para carpintería y mobiliario</p>
-            <div class="catalogo-botones">
-                <button class="btn-ver" data-pdf="pdfs/pertech-2026.pdf" data-titulo="Pertech - Herrajes Profesionales" data-target="blank">
-                    <i class="fas fa-eye"></i> Ver PDF
-                </button>
-                <button class="btn-descargar" data-pdf="pdfs/pertech-2026.pdf" data-nombre="pertech-2026.pdf" data-target="blank">
-                    <i class="fas fa-download"></i> Descargar PDF
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-    <!-- MODAL PDF -->
     <div id="pdfModal" class="pdf-modal">
         <div class="pdf-modal-content">
             <div class="pdf-modal-header">
@@ -983,7 +880,6 @@
         </div>
     </div>
 
-    <!-- FOOTER -->
     <footer>
         <div class="footer-container">
             <div class="footer-grid">
@@ -1016,20 +912,28 @@
         </div>
     </footer>
 
-    <!-- AOS Library -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     
     <script>
-        // Inicializar AOS
-        AOS.init({
-            duration: 800,
-            once: true,
-            offset: 100
-        });
+        AOS.init({ duration: 800, once: true, offset: 100 });
 
-        // Crear partículas flotantes
+        function showToast(message, isError = false) {
+            const toast = document.createElement('div');
+            toast.className = 'toast' + (isError ? ' error' : '');
+            toast.innerHTML = `<i class="fas ${isError ? 'fa-exclamation-triangle' : 'fa-check-circle'}"></i><span>${message}</span>`;
+            document.body.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateX(-50%) translateY(100px)';
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        // Partículas
         function createParticles() {
-            const particlesContainer = document.getElementById('particles');
+            const container = document.getElementById('particles');
+            if (!container) return;
+            container.innerHTML = '';
             for (let i = 0; i < 50; i++) {
                 const particle = document.createElement('div');
                 particle.classList.add('particle');
@@ -1040,31 +944,25 @@
                 particle.style.top = Math.random() * 100 + '%';
                 particle.style.animationDelay = Math.random() * 5 + 's';
                 particle.style.animationDuration = (Math.random() * 3 + 4) + 's';
-                particlesContainer.appendChild(particle);
+                container.appendChild(particle);
             }
         }
         createParticles();
 
-        // Header scroll effect
+        // Header scroll
         const header = document.getElementById('header');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
+            header.classList.toggle('scrolled', window.scrollY > 50);
         });
 
         // Menú hamburguesa
         const hamburgerBtn = document.getElementById('hamburgerBtn');
         const navMenu = document.getElementById('navMenu');
-
         if (hamburgerBtn && navMenu) {
             hamburgerBtn.addEventListener('click', () => {
                 hamburgerBtn.classList.toggle('active');
                 navMenu.classList.toggle('active');
             });
-
             document.querySelectorAll('.nav-menu a').forEach(link => {
                 link.addEventListener('click', () => {
                     hamburgerBtn.classList.remove('active');
@@ -1073,13 +971,12 @@
             });
         }
 
-        // Modal PDF
+        // Modal PDF (solo para archivos PDF reales)
         const pdfModal = document.getElementById('pdfModal');
         const pdfViewer = document.getElementById('pdfViewer');
         const closePdfBtn = document.getElementById('closePdfBtn');
         const modalTituloPDF = document.getElementById('modalTituloPDF');
         const descargarPDFModal = document.getElementById('descargarPDFModal');
-
         let currentPdfUrl = '';
 
         function abrirPDF(pdfUrl, titulo) {
@@ -1097,161 +994,68 @@
             document.body.style.overflow = '';
         }
 
-        // Función para descargar PDF en about:blank
-        function descargarPDF(pdfUrl, nombreArchivo = null) {
-            // Abrir en una nueva pestaña (about:blank) para descargar
-            const newWindow = window.open('about:blank', '_blank');
-            if (newWindow) {
-                newWindow.document.write(`
-                    <!DOCTYPE html>
-                    <html>
-                    <head>
-                        <title>Descargando ${nombreArchivo || 'PDF'}...</title>
-                        <style>
-                            body {
-                                font-family: Arial, sans-serif;
-                                display: flex;
-                                justify-content: center;
-                                align-items: center;
-                                height: 100vh;
-                                margin: 0;
-                                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                                color: white;
-                            }
-                            .container {
-                                text-align: center;
-                            }
-                            .spinner {
-                                border: 4px solid rgba(255,255,255,0.3);
-                                border-radius: 50%;
-                                border-top: 4px solid white;
-                                width: 40px;
-                                height: 40px;
-                                animation: spin 1s linear infinite;
-                                margin: 20px auto;
-                            }
-                            @keyframes spin {
-                                0% { transform: rotate(0deg); }
-                                100% { transform: rotate(360deg); }
-                            }
-                        </style>
-                    </head>
-                    <body>
-                        <div class="container">
-                            <h2>Descargando PDF...</h2>
-                            <div class="spinner"></div>
-                            <p>${nombreArchivo || 'Archivo'}</p>
-                        </div>
-                        <script>
-                            window.location.href = '${pdfUrl}';
-                            setTimeout(() => {
-                                window.close();
-                            }, 2000);
-                        <\/script>
-                    </body>
-                    </html>
-                `);
-            } else {
-                // Fallback: descarga directa
-                const enlace = document.createElement('a');
-                enlace.href = pdfUrl;
-                if (nombreArchivo) {
-                    enlace.download = nombreArchivo;
-                }
-                document.body.appendChild(enlace);
-                enlace.click();
-                document.body.removeChild(enlace);
-            }
+        function descargarPDF(pdfUrl, nombreArchivo) {
+            const link = document.createElement('a');
+            link.href = pdfUrl;
+            link.download = nombreArchivo || pdfUrl.split('/').pop();
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            showToast('Descargando PDF...');
         }
 
-        // Evento para descargar desde el modal
         if (descargarPDFModal) {
-            descargarPDFModal.onclick = function() {
-                if (currentPdfUrl) {
-                    const nombreArchivo = currentPdfUrl.split('/').pop();
-                    descargarPDF(currentPdfUrl, nombreArchivo);
-                    cerrarPDF();
-                }
-            }
-        }
-
-        if (closePdfBtn) {
-            closePdfBtn.onclick = cerrarPDF;
-        }
-
-        if (pdfModal) {
-            pdfModal.onclick = function(e) {
-                if (e.target === pdfModal) {
-                    cerrarPDF();
-                }
-            }
-        }
-
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && pdfModal.style.display === 'block') {
+            descargarPDFModal.onclick = () => {
+                if (currentPdfUrl) descargarPDF(currentPdfUrl, currentPdfUrl.split('/').pop());
                 cerrarPDF();
-            }
-        });
+            };
+        }
 
-        // Manejar todos los botones "Ver PDF"
+        if (closePdfBtn) closePdfBtn.onclick = cerrarPDF;
+        if (pdfModal) pdfModal.onclick = (e) => { if (e.target === pdfModal) cerrarPDF(); };
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && pdfModal.style.display === 'block') cerrarPDF(); });
+
+        // Botones Ver - Abren HTML en nueva pestaña (funciona en móvil con enlace directo)
         document.querySelectorAll('.btn-ver').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const url = btn.getAttribute('data-pdf');
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const url = btn.getAttribute('data-url');
                 const titulo = btn.getAttribute('data-titulo');
-                const target = btn.getAttribute('data-target');
                 
-                if (target === 'blank') {
-                    window.open(url, '_blank');
-                } else {
-                    if (url) {
-                        abrirPDF(url, titulo);
+                if (url) {
+                    // Detectar si es PDF o HTML por la extensión
+                    const esPDF = url.toLowerCase().endsWith('.pdf');
+                    
+                    if (esPDF) {
+                        // Si es PDF, usar el modal
+                        fetch(url, { method: 'HEAD' })
+                            .then(response => {
+                                if (response.ok) {
+                                    abrirPDF(url, titulo);
+                                } else {
+                                    showToast('Error: No se pudo cargar el PDF', true);
+                                }
+                            })
+                            .catch(() => showToast('Error: No se pudo cargar el PDF', true));
+                    } else {
+                        // Si es HTML, abrir en la misma ventana (funciona siempre en móvil)
+                        window.location.href = url;
                     }
                 }
             });
         });
 
-        // Botones "Descargar PDF"
+        // Botones Descargar PDF
         document.querySelectorAll('.btn-descargar').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const pdfUrl = btn.getAttribute('data-pdf');
-                const nombreArchivo = btn.getAttribute('data-nombre');
-                const target = btn.getAttribute('data-target');
-                
-                if (pdfUrl) {
-                    if (target === 'blank') {
-                        // Abrir en about:blank para descargar
-                        descargarPDF(pdfUrl, nombreArchivo);
-                    } else {
-                        // Descarga directa para otros PDFs
-                        const enlace = document.createElement('a');
-                        enlace.href = pdfUrl;
-                        if (nombreArchivo) {
-                            enlace.download = nombreArchivo;
-                        }
-                        document.body.appendChild(enlace);
-                        enlace.click();
-                        document.body.removeChild(enlace);
-                    }
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const url = btn.getAttribute('data-url');
+                const nombre = btn.getAttribute('data-nombre');
+                if (url) {
+                    descargarPDF(url, nombre);
                 }
             });
         });
-            // JavaScript para manejar la apertura en nueva pestaña
-    document.addEventListener('DOMContentLoaded', function() {
-        // Para todos los botones con data-target="blank"
-        const buttons = document.querySelectorAll('[data-target="blank"]');
-        
-        buttons.forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
-                const pdfUrl = this.getAttribute('data-pdf');
-                
-                if (pdfUrl) {
-                    // Abrir en nueva pestaña
-                    window.open(pdfUrl, '_blank');
-                }
-            });
-        });
-    });
     </script>
 </body>
 </html>
